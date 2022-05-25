@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            body {
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            body,
+            a,
+            p,
+            div,
+            span,
+            header,
+            footer h1,
+            h2,
+            h3 {
+                font-family: "Lucida Sans", "Lucida Sans Regular",
+                    "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+                    sans-serif;
+                color: #2d2d2d;
+            }
+            a {
+                text-decoration: none;
+                font-size: medium;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            .body {
+                background-color: #eeeeee;
+            }
+            #logo {
+                color: #0a62bb;
+                font-size: 35px;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                margin-bottom: 50px;
+            }
+
+            h2 {
+                text-align: center;
+                color: #3e3e3e;
+                border: 0px solid #06417b;
+                margin-top: 20px;
+            }
+
+            h3 {
+                text-align: center;
+            }
+            #container {
+                width: 90%;
+                max-width: 600px;
+                margin: auto;
+                font-size: medium;
+                background-color: #f7f7fc;
+                border-top-right-radius: 100px;
+            }
+
+            header {
+                padding: 35px;
+            }
+
+            #message {
+                background-color: #fff;
+                padding: 35px;
+                min-height: 500px;
+            }
+
+            p {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            span {
+                font-size: smaller;
+            }
+            footer {
+                background-color: #d7d7d7;
+                padding: 15px;
+                color: #747474;
+                text-align: center;
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body class="body">
+        <div id="container">
+            <header>
+                <div id="logo">widget<b>Dev</b></div>
+                <h3>Você recebeu uma nova mensagem no widgetDev</h3>
+                <h2>{{title}}</h2>
+            </header>
+
+            <div id="message">
+                <h3>
+                    O rementente entrou em contato por um(a):<br />
+                    {{type}}
+                </h3>
+                <p><b>Remetente:</b> {{email}}</p>
+                <p><b>Comentário:</b> {{comment}}</p>
+
+                {{#if screenshot}}
+                <p>screenshot em anexo</p>
+                {{else}}
+                <p>screenshot não enviado</p>
+                {{/if}}
+            </div>
+            <footer>
+                obrigado por escolher o <b>widgetDev</b> para seus contatos
+                <div>
+                    © 2022
+                    <a href="https://widgetdev.online" target="_blank"
+                        >widgetdev.online</a
+                    >
+                    - Todos os direitos reservados.
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
