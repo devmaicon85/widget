@@ -1,20 +1,18 @@
 import { GitBranch } from "phosphor-react";
-import { useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import { getQueryCode } from "../../util/getQueryUrl";
+import { useSearchParams } from "react-router-dom";
 
 export function Footer() {
     const [query, setQuery] = useSearchParams();
 
     return (
-        <footer className="bottom-0 no-underline text-xs h-12 bg-light-text-secondary bg-opacity-10 rounded-b-2xl flex items-center justify-center">
+        <footer className="bottom-0 flex items-center justify-center h-12 text-xs no-underline bg-light-text-secondary bg-opacity-10 rounded-b-2xl">
             <a
-                href="https://widgetdev.online"
+                href="https://github.com/devmaicon85/widget.v2/"
                 className="flex no-underline text-light-text-secondary"
                 target="_blank"
             >
                 <GitBranch size={18} className="ml-1 mr-1" />
-                Projeto OpenSource
+                WidgetDev v2
             </a>
         </footer>
     );

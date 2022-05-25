@@ -1,4 +1,3 @@
-import html2canvas from "html2canvas";
 import { DataScript } from "../../types/DataScriptTypes";
 import { widgetScreenshot } from "./screenshot";
 
@@ -52,7 +51,7 @@ const iframeWidget = "iframeWidget";
         iFrame.scrolling = "no";
         iFrame.setAttribute(
             "style",
-            "position:fixed; border:0px; height:75px; width:66px; right:20px; bottom:10px;  z-index:999998; opacity: 1; overflow:hidden; padding: 0px;   transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom;"
+            "position:fixed; background-color:transparent; border:0px; height:75px; width:66px; right:20px; bottom:10px;  z-index:999998; opacity: 1; overflow:hidden; padding: 0px; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom;"
         );
         document.body.appendChild(iFrame);
         iFrameElement = document.getElementById(iframeWidget);
