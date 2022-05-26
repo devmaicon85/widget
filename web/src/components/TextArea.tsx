@@ -1,7 +1,6 @@
 import { getTheme } from "../util/getQueryUrl";
 
-interface TextAreaProps
-    extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+type TextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export function TextArea({ ...rest }: TextAreaProps) {
     return (

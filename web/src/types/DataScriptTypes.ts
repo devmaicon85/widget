@@ -6,6 +6,7 @@ export type DataScriptType = {
     whatsapp: string;
     instagram: string;
     screenshot: string;
+    apiFaq: string;
 };
 
 export const DataScript = {
@@ -57,6 +58,14 @@ export const DataScript = {
         description: "Botão para o usuário tirar um screenshot da tela",
         placeholder: "",
         default: "true",
+    },
+
+    apiFaq: {
+        field: "apifaq",
+        label: "URL API de Perguntas e Respostas",
+        description: "Você pode criar suas perguntas e respostas públicas ",
+        placeholder: "",
+        default: "",
     },
 };
 

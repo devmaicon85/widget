@@ -1,6 +1,6 @@
 import { getTheme } from "../util/getQueryUrl";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function Button({ className, ...rest }: ButtonProps) {
     return (

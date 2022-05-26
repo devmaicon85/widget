@@ -1,27 +1,31 @@
+import { Check } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { Input } from "../components/Input";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import Header from "../components/HeaderPage";
+import { Input } from "../components/Input";
+import { DataScript, DataScriptTypes } from "../types/DataScriptTypes";
+import { createScriptUser, executeScriptUser } from "../util/createScriptUser";
 import {
+    getQueryApiFaq,
     getQueryEmail,
-    getQueryOpen,
-    getTheme,
-    getQueryTitle,
     getQueryHasScreenshotButton,
-    getQueryWhatsapp as getWhatsapp,
     getQueryInstagram,
+    getQueryOpen,
+    getQueryTitle,
+    getQueryWhatsapp as getWhatsapp,
+    getTheme,
 } from "../util/getQueryUrl";
 
-import { Check } from "phosphor-react";
-import { createScriptUser, executeScriptUser } from "../util/createScriptUser";
-import { DataScript, DataScriptTypes } from "../types/DataScriptTypes";
-
 export function Home() {
+    const [query] = useSearchParams();
+
     const [selectedTheme, setSelectedTheme] = useState(getTheme());
     const [title, setTitle] = useState(getQueryTitle());
     const [email, setEmail] = useState(getQueryEmail());
     const [whatsapp, setWhatsapp] = useState(getWhatsapp());
     const [instagram, setInstagram] = useState(getQueryInstagram());
+    const [apiFaq, setApiFaq] = useState(getQueryApiFaq(query));
 
     const [open, setOpen] = useState(getQueryOpen());
     const [hasScreenshotButton, setHasScreenshotButton] = useState(
@@ -42,6 +46,7 @@ export function Home() {
                 screenshot: String(hasScreenshotButton),
                 whatsapp,
                 instagram,
+                apiFaq,
             });
         }, 1000);
 
@@ -54,16 +59,17 @@ export function Home() {
         whatsapp,
         instagram,
         hasScreenshotButton,
+        apiFaq,
     ]);
 
     return (
         <div className="bg-slate-100">
             <Header />
 
-            <div className="container mx-auto px-4 sm:px-8 max-w-3xl bg-white ">
+            <div className="container max-w-3xl px-4 mx-auto bg-white sm:px-8 ">
                 <div className="py-8">
-                    <h1 className="text-2xl mb-2 p-4 rounded-lg">
-                        <div className="mb-4 text-center tracking-widest leading-10">
+                    <h1 className="p-4 mb-2 text-2xl rounded-lg">
+                        <div className="mb-4 leading-10 tracking-widest text-center">
                             Instale Agora um{" "}
                             <label
                                 className={`bg-theme-${selectedTheme} text-slate-100 text-xl rounded-md pr-5 pl-5 pt-1 pb-1 m-3`}
@@ -73,14 +79,14 @@ export function Home() {
                             no seu site
                         </div>
                     </h1>
-                    <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                        <div className="border p-4 flex flex-col gap-3 rounded-xl">
+                    <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+                        <div className="flex flex-col gap-3 p-4 border rounded-xl">
                             <div className="md:m-5">
-                                <label className="text-md text-zinc-800 font-bold p-1">
+                                <label className="p-1 font-bold text-md text-zinc-800">
                                     Cor do tema do seu Widget
                                 </label>
 
-                                <div className="grid grid-cols-8 md:grid-cols-12  rounded-md justify-between ">
+                                <div className="grid justify-between grid-cols-8 rounded-md md:grid-cols-12 ">
                                     {Array.from({ length: 21 }).map(
                                         (array, theme) => (
                                             <Button
@@ -114,7 +120,7 @@ export function Home() {
                                 </div>
                             </div>
                             <div>
-                                <label className="text-sm text-zinc-800 font-bold p-1">
+                                <label className="p-1 text-sm font-bold text-zinc-800">
                                     Título do Widget
                                 </label>
                                 <Input
@@ -124,10 +130,10 @@ export function Home() {
                                     placeholder="Feedback, Contato, Fale Conosco... "
                                 />
                             </div>
-                            <label className="text-sm text-zinc-800 font-bold p-1">
+                            <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.email.label}
-                                <div className="text-sm font-thin p-1">
-                                    {data.email.description}
+                                <div className="p-1 text-sm font-thin">
+                                    <pre>{data.email.description}</pre>
                                 </div>
                                 <Input
                                     onChange={(e) => setEmail(e.target.value)}
@@ -136,9 +142,9 @@ export function Home() {
                                 />
                             </label>
 
-                            <label className="text-sm text-zinc-800 font-bold p-1">
+                            <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.whatsapp.label}
-                                <div className="text-sm font-thin p-1">
+                                <div className="p-1 text-sm font-thin">
                                     {data.whatsapp.description}
                                 </div>
                                 <Input
@@ -150,9 +156,10 @@ export function Home() {
                                 />
                             </label>
 
-                            <label className="text-sm text-zinc-800 font-bold p-1">
+                            {/* // INSTAGRAM */}
+                            <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.instagram.label}
-                                <div className="text-sm font-thin p-1">
+                                <div className="p-1 text-sm font-thin">
                                     {data.instagram.description}
                                 </div>
                                 <Input
@@ -164,8 +171,30 @@ export function Home() {
                                 />
                             </label>
 
+                            {/* //API HELP */}
+                            <label className="p-1 text-sm font-bold text-zinc-800">
+                                {data.apiFaq.label}
+                                <div className="p-1 text-sm font-thin">
+                                    {data.apiFaq.description}
+                                    no link:
+                                    <a
+                                        href="https://faq.widgetdev.online"
+                                        target="_blank"
+                                        className="hover:underline"
+                                        rel="noreferrer"
+                                    >
+                                        https://faq.widgetdev.online
+                                    </a>
+                                </div>
+                                <Input
+                                    placeholder={data.apiFaq.placeholder}
+                                    onChange={(e) => setApiFaq(e.target.value)}
+                                    value={apiFaq}
+                                />
+                            </label>
+
                             {/* OPEN  */}
-                            <label className="text-md text-zinc-800 font-bold ">
+                            <label className="font-bold text-md text-zinc-800 ">
                                 {data.open.label}{" "}
                                 <div className="text-sm font-thin">
                                     {data.open.description}
@@ -174,14 +203,16 @@ export function Home() {
 
                             <button
                                 onClick={() => setOpen(!open)}
-                                className={`h-8 w-8 bg-white rounded-md border-2 text-3xl flex `}
+                                className={
+                                    "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
+                                }
                             >
                                 {open && <Check className="text-slate-900" />}
                             </button>
 
-                            <label className="text-md text-zinc-800 font-bold p-1">
+                            <label className="p-1 font-bold text-md text-zinc-800">
                                 {data.screenshot.label}
-                                <span className="text-sm font-thin p-1">
+                                <span className="p-1 text-sm font-thin">
                                     {data.screenshot.description}
                                 </span>
                             </label>
@@ -190,18 +221,20 @@ export function Home() {
                                 onClick={() =>
                                     setHasScreenshotButton(!hasScreenshotButton)
                                 }
-                                className={`h-8 w-8 bg-white rounded-md border-2 text-3xl flex `}
+                                className={
+                                    "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
+                                }
                             >
                                 {hasScreenshotButton && (
                                     <Check className="text-slate-900" />
                                 )}
                             </button>
                         </div>
-                        <div className="p-10 text-base justify-center text-center">
-                            Copie o código abaixo e cole dentro do HTML do seu
-                            site para implantar o Wedget automaticamente
+                        <div className="justify-center p-6 text-base text-center">
+                            Copie e cole o código abaixo dentro do HTML do seu
+                            site para implantar o WidgetDev automaticamente
                         </div>
-                        <div className="font-mono h-full rounded-3xl break-words  w-full border-2 bg-slate-800  text-slate-300 p-3">
+                        <div className="w-full h-full p-4 font-mono text-sm break-words rounded-xl bg-slate-800 text-slate-300">
                             {createScriptUser({
                                 theme: String(selectedTheme),
                                 title,
@@ -210,6 +243,7 @@ export function Home() {
                                 whatsapp,
                                 instagram,
                                 screenshot: String(hasScreenshotButton),
+                                apiFaq: String(apiFaq),
                             })}
                         </div>
                     </div>

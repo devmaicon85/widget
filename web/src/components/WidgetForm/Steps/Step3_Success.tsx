@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
-import {
-    getQueryEmail,
-    getQueryInstagram,
-    getTheme,
-} from "../../../util/getQueryUrl";
-
-import imageSuccess from "../../../assets/success.svg";
-import imageInstagramUrl from "../../../assets/instagram.png";
-import { Header } from "../Header";
-import { Button } from "../../Button";
 import { CheckSquare } from "phosphor-react";
+import imageInstagramUrl from "../../../assets/instagram.png";
+import { getQueryInstagram, getTheme } from "../../../util/getQueryUrl";
+import { Button } from "../../Button";
+import { Header } from "../Header";
 
 type Props = {
     onFeedbackRestartType: () => void;
@@ -21,17 +14,21 @@ export function Step3_Success({ onFeedbackRestartType }: Props) {
     return (
         <>
             <Header>Finalizado!</Header>
-            <div className="flex flex-col p-4  items-center py-10 w-full">
-                <h1 className="text-xl mt-2 mb-5">
+            <div className="flex flex-col items-center w-full p-4 py-10">
+                <h1 className="mt-2 mb-5 text-xl">
                     Agradecemos o seu contato!
                 </h1>
                 {queryInstagram ? (
-                    <a href={getQueryInstagram()} target="_blank">
+                    <a
+                        href={getQueryInstagram()}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <img
                             src={imageInstagramUrl}
                             alt="nosso instagram"
                             title="siga nosso instagram"
-                            className="h-12 w-12"
+                            className="w-12 h-12"
                         />
                     </a>
                 ) : (
@@ -42,7 +39,7 @@ export function Step3_Success({ onFeedbackRestartType }: Props) {
                 )}
                 <Button
                     onClick={onFeedbackRestartType}
-                    className={`py-2 px-6 mt-6 h-14`}
+                    className={"py-2 px-6 mt-6 h-14"}
                 >
                     Enviar outro contato
                 </Button>

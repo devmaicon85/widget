@@ -1,10 +1,8 @@
-import { Camera, CircleNotch, Spinner, Trash } from "phosphor-react";
-import { FormEvent, useState } from "react";
-import { Loading } from "../Loading";
-import html2canvas from "html2canvas";
-import { getTheme } from "../../util/getQueryUrl";
-import { Button } from "../Button";
+import { Camera, Trash } from "phosphor-react";
+import { useState } from "react";
 import { postMessageScreenshotFrameParent } from "../../util/postMessageFrameParent";
+import { Button } from "../Button";
+import { Loading } from "../Loading";
 
 type Props = {
     setScreenshot: (img: string | null) => void;
@@ -49,7 +47,7 @@ export function ScreenshotButton({ setScreenshot, screenshot }: Props) {
                 <Button
                     title="Excluir foto tirada da tela"
                     onClick={() => setScreenshot(null)}
-                    className="flex-none bg-transparent p-0"
+                    className="flex-none p-0 bg-transparent"
                 >
                     <img
                         className="w-10 h-10 border-2 rounded-md"
@@ -58,11 +56,7 @@ export function ScreenshotButton({ setScreenshot, screenshot }: Props) {
                     />
                     <Trash
                         weight="fill"
-                        className="
-                        text-red-300
-                        hover:text-red-600
-                        text-xl
-                        absolute"
+                        className="absolute text-xl text-red-300  hover:text-red-600"
                     />
                 </Button>
             )}

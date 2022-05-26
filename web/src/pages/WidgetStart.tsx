@@ -1,9 +1,9 @@
 import { Popover } from "@headlessui/react";
-import { ChatTeardropDots, X } from "phosphor-react";
+import { ChatTeardropDots } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { getTheme, getQueryTitle, getQueryOpen } from "../util/getQueryUrl";
-import { WidgetForm } from "../components/WidgetForm/Index";
 import { CloseButton } from "../components/WidgetForm/CloseButton";
+import { WidgetForm } from "../components/WidgetForm/Index";
+import { getQueryOpen, getTheme } from "../util/getQueryUrl";
 import { postMessageFrameParent } from "../util/postMessageFrameParent";
 
 export function WidgetStart() {
@@ -19,20 +19,15 @@ export function WidgetStart() {
         setTimeout(() => {
             setOpenWidget(queryOpenWidget);
         }, 1500);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <Popover
             id="popover"
-            className="
-                absolute
-                right-0
-                bottom-0
-                flex flex-col
-                items-end justify-end
-                "
+            className="absolute bottom-0 right-0 flex flex-col items-end justify-end "
         >
-            {({ open, close }) => (
+            {() => (
                 <>
                     <div className={`${!openWidget && "hidden "} `}>
                         <Popover.Panel static>

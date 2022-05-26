@@ -4,7 +4,7 @@ const outherImageUrl = new URL("../assets/outher.svg", import.meta.url).href;
 
 export const feedbackTypes = {
     BUG: {
-        title: `Problema`,
+        title: "Problema",
         image: {
             src: bugImageUrl,
             alt: "Imagem de um inseto",

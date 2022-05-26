@@ -8,7 +8,7 @@ export function createScriptUser(props: DataScriptType) {
     // retorna o script que o usuário deve inserir no site dele.
 
     let script = "";
-    Object.entries(DataScript).map(([key, item]) => {
+    Object.entries(DataScript).map(([key]) => {
         script += ` data-${key}="${props[key as DataScriptIndexs]}" `;
     });
 
@@ -31,7 +31,7 @@ export function createScriptUser(props: DataScriptType) {
 export function executeScriptUser(props: DataScriptType) {
     // executa o script na pagina home
     let script: HTMLScriptElement;
-    let htmlElement = document.getElementById("scriptWidgetDev");
+    const htmlElement = document.getElementById("scriptWidgetDev");
 
     if (htmlElement) {
         script = htmlElement as HTMLScriptElement;

@@ -1,6 +1,6 @@
 import { getTheme } from "../util/getQueryUrl";
 
-export interface InputProps extends React.ComponentPropsWithoutRef<"input"> {}
+export type InputProps = React.ComponentPropsWithoutRef<"input">;
 
 export function Input({ className, ...rest }: InputProps) {
     return (
@@ -13,7 +13,7 @@ export function Input({ className, ...rest }: InputProps) {
             h-9
             p-3
             dark:placeholder-dark-text-secondary dark:text-dark-text-primary dark:border-dark-stroke
-            placeholder-light-text-secondary placeholder:opacity-50 text-light-text-primary border-light-stroke
+            placeholder-light-text-secondary placeholder:opacity-100 text-light-text-primary border-light-stroke
             bg-transparent
             outline-none
             focus:border-theme-${getTheme()}

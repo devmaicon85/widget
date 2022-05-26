@@ -30,6 +30,13 @@ export function getQueryInstagram() {
     return query.get("instagram") ?? "";
 }
 
+export function getQueryApiFaq(query: URLSearchParams) {
+    return (
+        query.get("apifaq") ??
+        "https://faq.widgetdev.online/api/public/faq?key=cl3dkln4000512wbzvvmvzh7k&per_page=3&search="
+    );
+}
+
 export function getQueryOpen() {
     const [query] = useSearchParams();
     return query.get("open") === "false" ? false : true; // padrao é true - abre o widget automatico

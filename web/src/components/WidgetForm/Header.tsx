@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { getTheme } from "../../util/getQueryUrl";
 import { ButtonArrowLeft } from "./ButtonArrowLeft";
-import { CloseButton } from "./CloseButton";
 
 type HeaderProps = {
     children: React.ReactNode;
@@ -51,13 +49,7 @@ export function Header({
                         />
                     </>
                 )}
-                <span
-                    className=" text-1xl
-                    font-semibold
-                                text-ellipsis
-                                overflow-clip
-                                "
-                >
+                <span className="font-semibold text-1xl text-ellipsis overflow-clip">
                     {children}
                 </span>
             </span>

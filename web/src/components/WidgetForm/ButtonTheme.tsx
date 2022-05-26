@@ -14,7 +14,7 @@ export function Theme() {
     }
 
     return (
-        <span className="text-2xl absolute bottom-2 right-5 text-gray-400">
+        <span className="absolute text-2xl text-gray-400 border-0 border-red-500 right-5">
             <a href="#" onClick={handleSetTheme}>
                 {isThemeDark ? (
                     <SunDim alt="Alterar para tema Light"></SunDim>

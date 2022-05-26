@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
 import { FeedBackType, feedbackTypes } from "../../../types/FeedBackTypes";
-import {
-    getQueryInstagram,
-    getQueryTitle,
-    getTheme,
-} from "../../../util/getQueryUrl";
+import { getQueryTitle } from "../../../util/getQueryUrl";
 import { Button } from "../../Button";
 import { Header } from "../Header";
 
 type Props = {
     onFeedbackTypeChanged: (key: FeedBackType) => void;
+    onFeedbackRestartType: () => void;
 };
-export function Step1_TypeFeedBack({ onFeedbackTypeChanged }: Props) {
+export function Step1_TypeFeedBack({
+    onFeedbackTypeChanged,
+    onFeedbackRestartType,
+}: Props) {
     return (
         <>
-            <Header>{getQueryTitle()}</Header>
+            <Header onFeedbackRestart={onFeedbackRestartType}>
+                {getQueryTitle()}
+            </Header>
 
-            <div className="p-4 flex py-8 w-full gap-1">
+            <div className="flex w-full gap-1 p-4 py-8">
                 {Object.entries(feedbackTypes).map(([key, item]) => (
                     <Button
                         key={key}

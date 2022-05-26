@@ -1,4 +1,5 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
+import { api } from "../../../lib/api";
 import { FeedBackType, feedbackTypes } from "../../../types/FeedBackTypes";
 import {
     getQueryEmail,
@@ -6,12 +7,11 @@ import {
     getQueryTitle,
     getQueryWhatsapp,
 } from "../../../util/getQueryUrl";
-import { Input } from "../../Input";
 import { Button } from "../../Button";
-import { Header } from "../Header";
+import { Input } from "../../Input";
 import { Loading } from "../../Loading";
 import { TextArea } from "../../TextArea";
-import { api } from "../../../lib/api";
+import { Header } from "../Header";
 import { ScreenshotButton } from "../ScreenshotButton";
 
 type Props = {
@@ -98,7 +98,7 @@ export function Step2_Content({
                 {feedbackTypes[feedbackType].title}
             </Header>
 
-            <form onSubmit={handleSubmitFeedback} className="px-4 my-4 w-full">
+            <form onSubmit={handleSubmitFeedback} className="w-full px-4 my-4">
                 <TextArea
                     title={feedbackTypes[feedbackType].placeholder}
                     placeholder={feedbackTypes[feedbackType].placeholder}

@@ -11,5 +11,5 @@ export function postMessageFrameParent() {
 // ENVIAR O SCREENSHOT PARA O WINDOW.PARENT (SITE HOSPEDEIRO)
 export function postMessageScreenshotFrameParent() {
     window.parent.postMessage({ screenshot: true }, "*");
-    console.log(`Enviado para window.parent screenshot: true`);
+    console.log("Enviado para window.parent screenshot: true");
 }
