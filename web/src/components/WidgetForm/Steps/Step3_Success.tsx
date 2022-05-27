@@ -1,6 +1,9 @@
 import { CheckSquare } from "phosphor-react";
 import imageInstagramUrl from "../../../assets/instagram.png";
-import { getQueryInstagram, getTheme } from "../../../util/getQueryUrl";
+import {
+    useGetQueryInstagram,
+    useGetQueryTheme,
+} from "../../../util/getQueryUrl";
 import { Button } from "../../Button";
 import { Header } from "../Header";
 
@@ -9,7 +12,8 @@ type Props = {
 };
 
 export function Step3_Success({ onFeedbackRestartType }: Props) {
-    const queryInstagram = getQueryInstagram();
+    const queryInstagram = useGetQueryInstagram();
+    const theme = useGetQueryTheme();
 
     return (
         <>
@@ -19,11 +23,7 @@ export function Step3_Success({ onFeedbackRestartType }: Props) {
                     Agradecemos o seu contato!
                 </h1>
                 {queryInstagram ? (
-                    <a
-                        href={getQueryInstagram()}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
+                    <a href={queryInstagram} target="_blank" rel="noreferrer">
                         <img
                             src={imageInstagramUrl}
                             alt="nosso instagram"
@@ -34,7 +34,7 @@ export function Step3_Success({ onFeedbackRestartType }: Props) {
                 ) : (
                     <CheckSquare
                         size={50}
-                        className={`opacity-50 text-theme-${getTheme()}`}
+                        className={`opacity-50 text-theme-${theme}`}
                     />
                 )}
                 <Button

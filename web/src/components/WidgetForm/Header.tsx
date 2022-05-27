@@ -1,4 +1,4 @@
-import { getTheme } from "../../util/getQueryUrl";
+import { useGetQueryTheme } from "../../util/getQueryUrl";
 import { ButtonArrowLeft } from "./ButtonArrowLeft";
 
 type HeaderProps = {
@@ -13,6 +13,8 @@ export function Header({
     imgUrl,
     imgAlt,
 }: HeaderProps) {
+    const theme = useGetQueryTheme();
+
     return (
         <header>
             {onFeedbackRestart && (
@@ -30,7 +32,7 @@ export function Header({
                             text-white
                             rounded-t-xl
                             p-9
-                            bg-theme-${getTheme()}
+                            bg-theme-${theme}
 
                             `}
             >

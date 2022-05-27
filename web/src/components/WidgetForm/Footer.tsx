@@ -1,14 +1,13 @@
 import { GitBranch } from "phosphor-react";
-import { useSearchParams } from "react-router-dom";
-import { getTheme } from "../../util/getQueryUrl";
+import { useGetQueryTheme } from "../../util/getQueryUrl";
 import { Theme } from "./ButtonTheme";
 
 export function Footer() {
-    const [query, setQuery] = useSearchParams();
+    const theme = useGetQueryTheme();
 
     return (
         <footer
-            className={`flex items-center justify-center w-full h-12 text-xs no-underline bg-gray-200  dark:bg-dark-surface-secondary border-b-4 border-theme-${getTheme()} rounded-b-2xl`}
+            className={`flex items-center justify-center w-full h-12 text-xs no-underline bg-gray-200  dark:bg-dark-surface-secondary border-b-4 border-theme-${theme} rounded-b-2xl`}
         >
             <a
                 href="https://github.com/devmaicon85/widget.v2/"

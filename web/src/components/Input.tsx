@@ -1,8 +1,10 @@
-import { getTheme } from "../util/getQueryUrl";
+import { useGetQueryTheme } from "../util/getQueryUrl";
 
 export type InputProps = React.ComponentPropsWithoutRef<"input">;
 
 export function Input({ className, ...rest }: InputProps) {
+    const theme = useGetQueryTheme();
+
     return (
         <input
             className={`
@@ -16,8 +18,8 @@ export function Input({ className, ...rest }: InputProps) {
             placeholder-light-text-secondary placeholder:opacity-100 text-light-text-primary border-light-stroke
             bg-transparent
             outline-none
-            focus:border-theme-${getTheme()}
-            focus:ring-theme-${getTheme()}
+            focus:border-theme-${theme}
+            focus:ring-theme-${theme}
             focus:ring-1
             resize-none
 

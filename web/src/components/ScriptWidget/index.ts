@@ -19,7 +19,9 @@ const iframeWidget = "iframeWidget";
 
     Object.entries(DataScript).map(([key, item]) => {
         srcIframe += `${key}=${
-            doc.getAttribute(`data-${key}`) ?? item.default
+            doc.getAttribute(`data-${key}`)
+                ? encodeURIComponent(doc.getAttribute(`data-${key}`) ?? "")
+                : item.default
         }&`;
     });
 
@@ -38,6 +40,8 @@ const iframeWidget = "iframeWidget";
     // srcIframe += `&screenshot=${dataScreenshot}`;
 
     srcIframe = encodeURI(srcIframe);
+
+    console.log("🚀 ~ file: index.ts ~ line 41 ~ srcIframe", srcIframe);
 
     let iFrame: HTMLIFrameElement;
     let iFrameElement = document.getElementById(iframeWidget);

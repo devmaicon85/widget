@@ -2,10 +2,10 @@ import { FormEvent, useState } from "react";
 import { api } from "../../../lib/api";
 import { FeedBackType, feedbackTypes } from "../../../types/FeedBackTypes";
 import {
-    getQueryEmail,
-    getQueryHasScreenshotButton,
-    getQueryTitle,
-    getQueryWhatsapp,
+    useGetQueryEmail,
+    useGetQueryHasScreenshotButton,
+    useGetQueryTitle,
+    useGetQueryWhatsapp,
 } from "../../../util/getQueryUrl";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
@@ -31,13 +31,14 @@ export function Step2_Content({
     const [textButtonSend, setTextButtonSend] = useState("Enviar");
     const [emailReplyTo, setEmailReplyTo] = useState("");
 
-    const title = getQueryTitle();
-    const emailSendTo = getQueryEmail() ?? "";
-    const [whatsApp, setWhatsApp] = useState(getQueryWhatsapp());
+    const titleHeader = useGetQueryTitle();
+
+    const emailSendTo = useGetQueryEmail() ?? "";
+    const [whatsApp, setWhatsApp] = useState(useGetQueryWhatsapp());
     const [loadingWhats, setLoadingWhats] = useState(false);
 
     const [hasScreenshotButton, setHasScreenshotButton] = useState(
-        getQueryHasScreenshotButton()
+        useGetQueryHasScreenshotButton()
     );
 
     async function openLinkWhatsApp(whats: string, message: string) {
@@ -62,7 +63,7 @@ export function Step2_Content({
                 emailSendTo,
                 screenshot,
                 comment,
-                title,
+                title: titleHeader,
             });
 
             let message =

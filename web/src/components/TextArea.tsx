@@ -1,8 +1,10 @@
-import { getTheme } from "../util/getQueryUrl";
+import { useGetQueryTheme } from "../util/getQueryUrl";
 
 type TextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export function TextArea({ ...rest }: TextAreaProps) {
+    const theme = useGetQueryTheme();
+
     return (
         <textarea
             {...rest}
@@ -14,9 +16,9 @@ export function TextArea({ ...rest }: TextAreaProps) {
                     border
                     text-light-text-primary 
                     border-light-stroke
-                    focus:border-theme-${getTheme()}
+                    focus:border-theme-${theme}
                     focus:ring-1
-                    focus:ring-theme-${getTheme()}
+                    focus:ring-theme-${theme}
 
                     dark:placeholder-dark-text-secondary 
                     dark:text-dark-text-primary 

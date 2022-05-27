@@ -1,35 +1,32 @@
 import { Check } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import Header from "../components/HeaderPage";
 import { Input } from "../components/Input";
 import { DataScript, DataScriptTypes } from "../types/DataScriptTypes";
 import { createScriptUser, executeScriptUser } from "../util/createScriptUser";
 import {
-    getQueryApiFaq,
-    getQueryEmail,
-    getQueryHasScreenshotButton,
-    getQueryInstagram,
-    getQueryOpen,
-    getQueryTitle,
-    getQueryWhatsapp as getWhatsapp,
-    getTheme,
+    useGetQueryApiFaq,
+    useGetQueryEmail,
+    useGetQueryHasScreenshotButton,
+    useGetQueryInstagram,
+    useGetQueryOpen,
+    useGetQueryTheme,
+    useGetQueryTitle,
+    useGetQueryWhatsapp as getWhatsapp,
 } from "../util/getQueryUrl";
 
 export function Home() {
-    const [query] = useSearchParams();
-
-    const [selectedTheme, setSelectedTheme] = useState(getTheme());
-    const [title, setTitle] = useState(getQueryTitle());
-    const [email, setEmail] = useState(getQueryEmail());
+    const [selectedTheme, setSelectedTheme] = useState(useGetQueryTheme());
+    const [title, setTitle] = useState(useGetQueryTitle());
+    const [email, setEmail] = useState(useGetQueryEmail());
     const [whatsapp, setWhatsapp] = useState(getWhatsapp());
-    const [instagram, setInstagram] = useState(getQueryInstagram());
-    const [apiFaq, setApiFaq] = useState(getQueryApiFaq(query));
+    const [instagram, setInstagram] = useState(useGetQueryInstagram());
+    const [apiFaq, setApiFaq] = useState(useGetQueryApiFaq());
 
-    const [open, setOpen] = useState(getQueryOpen());
+    const [open, setOpen] = useState(useGetQueryOpen());
     const [hasScreenshotButton, setHasScreenshotButton] = useState(
-        getQueryHasScreenshotButton()
+        useGetQueryHasScreenshotButton()
     );
 
     // const [dataOptionsWidget, setDataOptionWidget] = useState<DataScriptTypes>()

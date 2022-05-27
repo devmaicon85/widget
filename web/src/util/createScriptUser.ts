@@ -13,7 +13,7 @@ export function createScriptUser(props: DataScriptType) {
     });
 
     script = `<script async ${script} src="${window.location.origin}/widget.js"></script>`;
-    console.log(script);
+    // console.log(script);
 
     return script;
     // return `<script

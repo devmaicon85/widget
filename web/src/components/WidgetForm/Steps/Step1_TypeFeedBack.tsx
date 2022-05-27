@@ -1,5 +1,5 @@
 import { FeedBackType, feedbackTypes } from "../../../types/FeedBackTypes";
-import { getQueryTitle } from "../../../util/getQueryUrl";
+import { useGetQueryTitle } from "../../../util/getQueryUrl";
 import { Button } from "../../Button";
 import { Header } from "../Header";
 
@@ -11,10 +11,12 @@ export function Step1_TypeFeedBack({
     onFeedbackTypeChanged,
     onFeedbackRestartType,
 }: Props) {
+    const titleHeader = useGetQueryTitle();
+
     return (
         <>
             <Header onFeedbackRestart={onFeedbackRestartType}>
-                {getQueryTitle()}
+                {titleHeader}
             </Header>
 
             <div className="flex w-full gap-1 p-4 py-8">

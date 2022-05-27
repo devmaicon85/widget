@@ -3,13 +3,15 @@ import { ChatTeardropDots } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { CloseButton } from "../components/WidgetForm/CloseButton";
 import { WidgetForm } from "../components/WidgetForm/Index";
-import { getQueryOpen, getTheme } from "../util/getQueryUrl";
+import { useGetQueryOpen, useGetQueryTheme } from "../util/getQueryUrl";
 import { postMessageFrameParent } from "../util/postMessageFrameParent";
 
 export function WidgetStart() {
     const [openWidget, setOpenWidget] = useState(false);
 
-    const queryOpenWidget = getQueryOpen();
+    const queryOpenWidget = useGetQueryOpen();
+
+    const theme = useGetQueryTheme();
 
     useEffect(() => {
         postMessageFrameParent();
@@ -39,7 +41,7 @@ export function WidgetStart() {
                     <Popover.Button
                         onClick={() => setOpenWidget(!openWidget)}
                         className={`
-                                bg-theme-${getTheme()}
+                                bg-theme-${theme}
                                 rounded-2xl
                                 focus:brightness-110
                                 outline-none

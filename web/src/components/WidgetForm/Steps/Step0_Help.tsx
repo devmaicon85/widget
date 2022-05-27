@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useSearchParams } from "react-router-dom";
 import { apiHelp } from "../../../lib/api";
-import { getQueryApiFaq, getQueryTitle } from "../../../util/getQueryUrl";
+import { useGetQueryApiFaq, useGetQueryTitle } from "../../../util/getQueryUrl";
 import { postMessageFrameParent } from "../../../util/postMessageFrameParent";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
@@ -26,7 +26,10 @@ export function Step0_Help({ onFinally }: Props) {
     const [loading, setLoading] = useState(false);
 
     const [query] = useSearchParams();
-    const urlApi = getQueryApiFaq(query);
+
+    const titleHeader = useGetQueryTitle();
+
+    const urlApi = useGetQueryApiFaq();
 
     useEffect(() => {
         setLoading(true);
@@ -81,7 +84,7 @@ export function Step0_Help({ onFinally }: Props) {
 
     return (
         <>
-            <Header>{getQueryTitle()}</Header>
+            <Header>{titleHeader}</Header>
 
             <div className="flex flex-col justify-center h-auto p-4 ">
                 <span className="flex justify-center mb-2 text-base font-bold text-gray-700 dark:text-gray-300 ">
@@ -131,7 +134,7 @@ export function Step0_Help({ onFinally }: Props) {
                 }`}
                 onClick={onFinally}
             >
-                {getQueryTitle()}
+                {titleHeader}
             </Button>
         </>
     );

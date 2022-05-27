@@ -1,8 +1,10 @@
-import { getTheme } from "../util/getQueryUrl";
+import { useGetQueryTheme } from "../util/getQueryUrl";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function Button({ className, ...rest }: ButtonProps) {
+    const theme = useGetQueryTheme();
+
     return (
         <button
             className={`
@@ -12,12 +14,12 @@ export function Button({ className, ...rest }: ButtonProps) {
                         disabled:bg-light-surface-secondary-hover
                         dark:disabled:bg-dark-surface-secondary-hover
                         
-                        bg-theme-${getTheme()}
+                        bg-theme-${theme}
                         
-                        border-theme-${getTheme()}
+                        border-theme-${theme}
                         
-                        hover:bg-theme-${getTheme()}
-                        hover:border-theme-${getTheme()}
+                        hover:bg-theme-${theme}
+                        hover:border-theme-${theme}
                         flex justify-center items-center text-sm
                         disabled:cursor-not-allowed
                         disabled:scale-100
@@ -33,11 +35,11 @@ export function Button({ className, ...rest }: ButtonProps) {
                         focus:ring-offset-white 
                         dark:focus:ring-offset-zinc-900
                         
-                        focus:ring-theme-${getTheme()}
+                        focus:ring-theme-${theme}
                         
                         text-light-surface-primary
                         
-                        dark:bg-theme-${getTheme()}
+                        dark:bg-theme-${theme}
                         dark:text-dark-text-primary 
                         dark:focus:ring-offset-dark-surface-primary
 

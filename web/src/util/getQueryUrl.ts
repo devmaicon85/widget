@@ -1,48 +1,70 @@
 import { useSearchParams } from "react-router-dom";
 
-export function getTheme() {
+export function useGetQueryTheme() {
     const [query] = useSearchParams();
-    return query.get("theme") ?? 0;
+
+    const url = query.get("theme") ?? "0";
+    const decode = decodeURIComponent(url);
+
+    return decode;
 }
 
-export function getQueryTitle() {
+export function useGetQueryApiFaq() {
     const [query] = useSearchParams();
-    return query.get("title") ?? "Deixe seu Feedback";
+
+    return decodeURIComponent(query.get("apiFaq") ?? "") ?? "";
 }
 
-export function getQueryCode() {
+export function useGetQueryTitle() {
     const [query] = useSearchParams();
-    return query.get("code") ?? "demo";
+
+    const url = query.get("title") ?? "Deixe seu Feedback";
+    const decode = decodeURIComponent(url);
+
+    return decode;
 }
 
-export function getQueryEmail() {
+export function useGetQueryEmail() {
     const [query] = useSearchParams();
-    return query.get("email") ?? "oi@widgetdev.online";
+
+    const url = query.get("email") ?? "oi@widgetdev.online";
+    const decode = decodeURIComponent(url);
+
+    return decode;
 }
 
-export function getQueryWhatsapp() {
+export function useGetQueryWhatsapp() {
     const [query] = useSearchParams();
-    return query.get("whatsapp") ?? "";
+
+    const url = query.get("whatsapp") ?? "";
+    const decode = decodeURIComponent(url);
+
+    return decode;
 }
 
-export function getQueryInstagram() {
+export function useGetQueryInstagram() {
     const [query] = useSearchParams();
-    return query.get("instagram") ?? "";
+
+    const url = query.get("instagram") ?? "";
+    const decode = decodeURIComponent(url);
+
+    return decode;
 }
 
-export function getQueryApiFaq(query: URLSearchParams) {
-    return (
-        query.get("apifaq") ??
-        "https://faq.widgetdev.online/api/public/faq?key=cl3dkln4000512wbzvvmvzh7k&per_page=3&search="
-    );
+export function useGetQueryOpen() {
+    const [query] = useSearchParams();
+
+    const url = query.get("open") === "false" ? false : true;
+    // const decode = decodeURIComponent(url);
+
+    return url;
 }
 
-export function getQueryOpen() {
+export function useGetQueryHasScreenshotButton() {
     const [query] = useSearchParams();
-    return query.get("open") === "false" ? false : true; // padrao é true - abre o widget automatico
-}
 
-export function getQueryHasScreenshotButton() {
-    const [query] = useSearchParams();
-    return query.get("screenshot") === "true" ? true : false; // padrao é false ao iniciar nova configuração
+    const url = query.get("screenshot") === "false" ? false : true;
+    // const decode = decodeURIComponent(url);
+
+    return url;
 }
