@@ -147,7 +147,9 @@ export function Home() {
                                 <Input
                                     placeholder={data.whatsapp.placeholder}
                                     onChange={(e) =>
-                                        setWhatsapp(e.target.value)
+                                        setWhatsapp(
+                                            e.target.value.replace(/\D/gim, "")
+                                        )
                                     }
                                     value={whatsapp}
                                 />

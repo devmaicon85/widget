@@ -41,8 +41,6 @@ const iframeWidget = "iframeWidget";
 
     srcIframe = encodeURI(srcIframe);
 
-    console.log("🚀 ~ file: index.ts ~ line 41 ~ srcIframe", srcIframe);
-
     let iFrame: HTMLIFrameElement;
     let iFrameElement = document.getElementById(iframeWidget);
 
@@ -53,10 +51,25 @@ const iframeWidget = "iframeWidget";
 
         iFrame.title = "iframe Widget";
         iFrame.scrolling = "no";
-        iFrame.setAttribute(
-            "style",
-            "position:fixed; background-color:transparent; border:0px; height:75px; width:66px; right:20px; bottom:10px;  z-index:999998; opacity: 1; overflow:hidden; padding: 0px; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: all, top, bottom;"
-        );
+
+        iFrame.style.boxSizing = "border-box";
+        iFrame.style.width = "60px";
+        iFrame.style.height = "70px";
+        iFrame.style.border = "0px";
+        iFrame.style.right = "20px";
+        iFrame.style.bottom = "10px";
+        iFrame.style.opacity = "1";
+        iFrame.style.backgroundColor = "transparent";
+        iFrame.style.position = "fixed";
+        iFrame.style.zIndex = "999999";
+        iFrame.style.overflow = "hidden";
+        iFrame.style.padding = "0px";
+        iFrame.style.transitionDuration = "250ms";
+        iFrame.style.transitionTimingFunction = "250ms";
+        // iFrame.style.transitionDuration =
+        //     "cubic-bezier(0.645, 0.045, 0.355, 1)";
+        iFrame.style.transitionProperty = "all"; //, top, bottom
+
         document.body.appendChild(iFrame);
         iFrameElement = document.getElementById(iframeWidget);
     }
@@ -112,12 +125,37 @@ async function OnMessage(e: MessageEvent) {
         height = 75; // altura do botao minimo pra ter animação
     }
 
-    if (window.screen.width < 400) {
+    // se a tela é de celular
+    // e o widget esta aberto
+    if (window.screen.width < 500 && width > 200) {
         width = window.screen.width;
+
+        iFrameElement.style.right = "0px";
+        iFrameElement.style.bottom = "0px";
     }
+
+    // if (window.screen.height < 600 && width > 200) {
+    //     // height = window.screen.height;
+    // }
+
+    iFrameElement.style.border = "0px solid #00FF00";
+    iFrameElement.style.maxHeight = window.screen.height + "px";
+    iFrameElement.style.maxWidth = window.screen.width + "px";
 
     iFrameElement.style.width = width + "px";
     iFrameElement.style.height = height + "px";
+
+    console.log(" frame height::", iFrameElement.style.width);
+    console.log(" frame width::", iFrameElement.style.height);
+
+    // se mudar o tamanho da tela do site
+    window.addEventListener("resize", function () {
+        // se a tela é de celular
+        // e o widget esta aberto
+
+        iFrameElement.style.maxHeight = window.screen.height + "px";
+        iFrameElement.style.maxWidth = window.screen.width + "px";
+    });
 }
 
 // export { openWidget };

@@ -21,13 +21,12 @@ export function WidgetStart() {
         setTimeout(() => {
             setOpenWidget(queryOpenWidget);
         }, 1500);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [queryOpenWidget]);
 
     return (
         <Popover
             id="popover"
-            className="absolute bottom-0 right-0 flex flex-col items-end justify-end "
+            className="absolute  border-0   bottom-0 right-0 flex flex-col items-end justify-end  "
         >
             {() => (
                 <>
@@ -47,11 +46,7 @@ export function WidgetStart() {
                                 outline-none
                                 px-3 h-14 w-14 text-white
                                 flex items-center group justify-center
-
-                                transition
-                                ease-in-out
-                                delay-150
-                                duration-300
+                               
                                 ${!openWidget && "hover:animate-bounce "}
 
                                 ${openWidget && "hidden "}

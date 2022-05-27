@@ -41,8 +41,9 @@ export const DataScript = {
     instagram: {
         field: "instagram",
         label: "Instagram",
-        description: "link que será sugerido para o contato seguir",
-        placeholder: "https://www.instagram.com/seu_usuario",
+        description:
+            "digite o nome do seu perfil no instagram. Será sugerido para usuário seguir.",
+        placeholder: "@rocketseat",
         default: "",
     },
     open: {

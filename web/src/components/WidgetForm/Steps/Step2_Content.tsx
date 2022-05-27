@@ -11,7 +11,7 @@ import { Button } from "../../Button";
 import { Input } from "../../Input";
 import { Loading } from "../../Loading";
 import { TextArea } from "../../TextArea";
-import { Header } from "../Header";
+import { ButtonArrowLeft } from "../ButtonArrowLeft";
 import { ScreenshotButton } from "../ScreenshotButton";
 
 type Props = {
@@ -91,13 +91,14 @@ export function Step2_Content({
 
     return (
         <>
-            <Header
+            <ButtonArrowLeft onClick={onFeedbackRestartType} />
+            {/* <Header
                 imgUrl={feedbackTypes[feedbackType].image.src}
                 imgAlt={feedbackTypes[feedbackType].image.alt}
                 onFeedbackRestart={onFeedbackRestartType}
             >
                 {feedbackTypes[feedbackType].title}
-            </Header>
+            </Header> */}
 
             <form onSubmit={handleSubmitFeedback} className="w-full px-4 my-4">
                 <TextArea

@@ -1,70 +1,125 @@
 import { useSearchParams } from "react-router-dom";
+import validator from "validator";
 
 export function useGetQueryTheme() {
     const [query] = useSearchParams();
 
-    const url = query.get("theme") ?? "0";
-    const decode = decodeURIComponent(url);
+    const theme = query.get("theme");
+    const decode = isNaN(Number(theme)) ? 0 : Number(theme);
 
-    return decode;
+    return String(decode);
 }
 
 export function useGetQueryApiFaq() {
     const [query] = useSearchParams();
 
-    return decodeURIComponent(query.get("apiFaq") ?? "") ?? "";
+    const url = query.get("apiFaq");
+
+    if (!url || url === "") {
+        return "";
+    }
+
+    try {
+        const decode = decodeURIComponent(url);
+
+        if (!validator.isURL(decode)) {
+            console.log("url api inválida", decode);
+            return "";
+        }
+
+        return decode;
+    } catch (error) {
+        return "";
+    }
 }
 
 export function useGetQueryTitle() {
     const [query] = useSearchParams();
 
-    const url = query.get("title") ?? "Deixe seu Feedback";
-    const decode = decodeURIComponent(url);
+    const title = query.get("title") ?? "";
 
-    return decode;
+    try {
+        const decode = decodeURIComponent(title);
+        return decode;
+    } catch (error) {
+        return "Fale Conosco 💭";
+    }
 }
 
 export function useGetQueryEmail() {
     const [query] = useSearchParams();
 
-    const url = query.get("email") ?? "oi@widgetdev.online";
-    const decode = decodeURIComponent(url);
+    const email = query.get("email")?.trim() ?? "oi@widgetdev.online";
 
-    return decode;
+    try {
+        const decode = decodeURIComponent(email);
+
+        if (!validator.isEmail(decode)) {
+            console.log("email fornecido é inválido", decode);
+            return "";
+        }
+
+        return decode;
+    } catch (error) {
+        return "";
+    }
 }
 
 export function useGetQueryWhatsapp() {
     const [query] = useSearchParams();
 
-    const url = query.get("whatsapp") ?? "";
-    const decode = decodeURIComponent(url);
+    const whatsapp = query.get("whatsapp") ?? "";
 
-    return decode;
+    try {
+        const decode = decodeURIComponent(whatsapp);
+        const phone = decode.replace(/\D/gim, ""); // retorna apenas numeros
+
+        return phone;
+    } catch (error) {
+        return "";
+    }
 }
 
 export function useGetQueryInstagram() {
     const [query] = useSearchParams();
 
-    const url = query.get("instagram") ?? "";
-    const decode = decodeURIComponent(url);
+    const instagram = query.get("instagram") ?? "";
+    try {
+        const decode = decodeURIComponent(instagram);
 
-    return decode;
+        const perfil = decode.trim().replace("@", "").replace("/", "");
+
+        if (perfil === "") {
+            return "";
+        }
+
+        const insta = `https://instagram.com/${perfil}`;
+
+        if (!validator.isURL) {
+            console.log("url do instagram não é válida");
+            return "";
+        }
+
+        return insta;
+    } catch (error) {
+        console.log("instagram inválido");
+        return "";
+    }
 }
 
 export function useGetQueryOpen() {
     const [query] = useSearchParams();
 
-    const url = query.get("open") === "false" ? false : true;
-    // const decode = decodeURIComponent(url);
+    const open = query.get("open")?.trim() === "false" ? false : true;
 
-    return url;
+    return open;
 }
 
 export function useGetQueryHasScreenshotButton() {
     const [query] = useSearchParams();
 
-    const url = query.get("screenshot") === "false" ? false : true;
-    // const decode = decodeURIComponent(url);
+    const screenshot =
+        query.get("screenshot")?.trim() === "false" ? false : true;
 
-    return url;
+    return screenshot;
 }

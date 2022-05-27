@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { BiSkipPrevious } from "react-icons/bi";
+import validator from "validator";
 import { apiHelp } from "../../../lib/api";
 import {
     useGetQueryApiFaq,
@@ -10,7 +11,6 @@ import {
 import { postMessageFrameParent } from "../../../util/postMessageFrameParent";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
-import { Header } from "../Header";
 
 type Props = {
     onFinally: () => void;
@@ -35,10 +35,14 @@ export function Step0_Help({ onFinally }: Props) {
     const theme = useGetQueryTheme();
 
     useEffect(() => {
+        postMessageFrameParent();
+        console.log("mudou tamanho frame");
+    }, [dataHelp, question]);
+
+    useEffect(() => {
         setMessageError(null);
 
-        if (urlApi.length < 20) {
-            console.log("url da api é menor que 20 caracteres");
+        if (!validator.isURL(urlApi)) {
             onFinally();
         }
 
@@ -64,15 +68,18 @@ export function Step0_Help({ onFinally }: Props) {
                 if (result.data.length > 0) {
                     setDataHelp(result?.data);
                     setMessageError("Confira os principais resultados abaixo:");
+                    setLoading(false);
                 } else {
                     setMessageError("Nenhum resultado encontrado =(");
                     setDataHelp([]);
+                    setLoading(false);
                 }
             } catch (error) {
                 console.log(error);
 
                 setMessageError("Erro ao fazer a consulta");
                 setDataHelp([]);
+                setLoading(false);
 
                 setTimeout(() => {
                     onFinally();
@@ -82,7 +89,6 @@ export function Step0_Help({ onFinally }: Props) {
 
         const timer = setTimeout(() => {
             consultApi();
-            setLoading(false);
         }, 2000);
 
         return () => {
@@ -90,13 +96,9 @@ export function Step0_Help({ onFinally }: Props) {
         };
     }, [onFinally, urlApi, userQuery]);
 
-    useEffect(() => {
-        postMessageFrameParent();
-    }, [dataHelp, question]);
-
     return (
         <div>
-            <Header>{titleHeader}</Header>
+            {/* <Header>{titleHeader}</Header> */}
 
             {/* INICIO PERGUNTA */}
             {!question && (
@@ -108,10 +110,10 @@ export function Step0_Help({ onFinally }: Props) {
 
                         <div className="flex items-center">
                             <Input
-                                placeholder="digite aqui sua dúvida em poucas palavras..."
+                                placeholder="digite sua dúvida em poucas palavras..."
                                 onChange={(e) => setUserQuery(e.target.value)}
                                 className="text-sm"
-                                title="digite aqui sua dúvida em poucas palavras para que possamos tentar encontrar uma resposta rapidamente"
+                                title="digite sua dúvida em poucas palavras para que possamos tentar encontrar uma resposta rapidamente"
                             />
                             <span className=" absolute opacity-80 text-xl h-8 flex justify-center items-center w-8 right-4">
                                 {loading && (
@@ -127,10 +129,10 @@ export function Step0_Help({ onFinally }: Props) {
                     </div>
 
                     {dataHelp && dataHelp.length > 0 && (
-                        <ul className="flex flex-col w-full min-h-[200px] list-decimal px-8 mb-4 overflow-auto text-wr max-h-96 ">
+                        <ul className="flex flex-col w-full min-h-[200px]  list-decimal px-8 mb-4 overflow-auto text-wr  ">
                             {dataHelp.map((help, index) => (
-                                <li key={index} className="p-0 mb-1 border-0">
-                                    <div className="mb text-sm font-bold border-0">
+                                <li key={index} className="p-0 mb-1">
+                                    <div className="mb text-sm font-bold">
                                         <div
                                             className="cursor-pointer hover:underline opacity-75"
                                             onClick={() => setQuestion(help)}
@@ -148,24 +150,23 @@ export function Step0_Help({ onFinally }: Props) {
 
             {/* INICIO RESPOSTA */}
             {question && (
-                <div>
-                    <div className="flex flex-col w-full p-4 mb-2 overflow-auto border-0 text-wr max-h-96 ">
-                        <div className="p-0 mb-1 border-0">
-                            <div className="mb-2 text-sm font-bold border-0">
+                <div className=" ">
+                    <div className="max-h-full max-w-full p-4 pb-0   ">
+                        <div className="p-0 mb-1">
+                            <div className="mb-2 text-sm font-bold ">
                                 {question.title}
                             </div>
-                            <div className="text-sm">
+                            <div className="text-sm  text-justify max-h-52 overflow-auto  ">
                                 {question.description}
                             </div>
-
-                            <div
-                                className={`text-theme-${theme} font-bold cursor-pointer hover:opacity-70  flex items-center w-[6rem] mt-6`}
-                                onClick={() => setQuestion(null)}
-                            >
-                                <BiSkipPrevious className="h-9 w-9" />
-                                VOLTAR
-                            </div>
                         </div>
+                    </div>
+                    <div
+                        className={`text-theme-${theme} font-bold my-6 cursor-pointer hover:opacity-70  flex items-center w-[6rem] `}
+                        onClick={() => setQuestion(null)}
+                    >
+                        <BiSkipPrevious className="h-9 w-9" />
+                        VOLTAR
                     </div>
                 </div>
             )}

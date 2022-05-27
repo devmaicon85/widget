@@ -1,7 +1,7 @@
 import { FeedBackType, feedbackTypes } from "../../../types/FeedBackTypes";
 import { useGetQueryTitle } from "../../../util/getQueryUrl";
 import { Button } from "../../Button";
-import { Header } from "../Header";
+import { ButtonArrowLeft } from "../ButtonArrowLeft";
 
 type Props = {
     onFeedbackTypeChanged: (key: FeedBackType) => void;
@@ -15,9 +15,10 @@ export function Step1_TypeFeedBack({
 
     return (
         <>
-            <Header onFeedbackRestart={onFeedbackRestartType}>
+            <ButtonArrowLeft onClick={onFeedbackRestartType} />
+            {/* <Header onFeedbackRestart={onFeedbackRestartType}>
                 {titleHeader}
-            </Header>
+            </Header> */}
 
             <div className="flex w-full gap-1 p-4 py-8">
                 {Object.entries(feedbackTypes).map(([key, item]) => (

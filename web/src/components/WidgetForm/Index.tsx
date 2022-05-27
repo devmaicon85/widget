@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { FeedBackType } from "../../types/FeedBackTypes";
+import { useGetQueryTitle } from "../../util/getQueryUrl";
 import { postMessageFrameParent } from "../../util/postMessageFrameParent";
 import { Footer } from "./Footer";
+import { Header } from "./Header";
 import { Step0_Help } from "./Steps/Step0_Help";
 import { Step1_TypeFeedBack } from "./Steps/Step1_TypeFeedBack";
 import { Step2_Content } from "./Steps/Step2_Content";
@@ -12,16 +14,20 @@ export function WidgetForm() {
 
     const [nextStep, setNextStep] = useState(0);
 
+    const title = useGetQueryTitle();
+
     useEffect(() => {
         postMessageFrameParent();
-    }, [feedbackType]);
+    }, [nextStep, feedbackType]);
 
+    //max-w-[400px]  max-h-full  w-[calc(100vw-2rem)]
     return (
         <div
             className={
-                "sd:w-auto relative mb-2 max-h-full min-h-[300px] w-[calc(100vw-2rem)] min-w-[350px] max-w-[400px] rounded-2xl rounded-tl-3xl bg-light-surface-primary text-light-text-primary shadow-md dark:bg-dark-background dark:text-dark-text-primary "
+                "relative w-screen min-h-[300px] min-w-[320px] rounded-2xl rounded-tl-3xl bg-light-surface-primary text-light-text-primary  dark:bg-dark-background dark:text-dark-text-primary "
             }
         >
+            <Header>{title}</Header>
             <div>
                 {nextStep === 0 && (
                     <Step0_Help onFinally={() => setNextStep(1)} />
@@ -53,9 +59,8 @@ export function WidgetForm() {
                         }}
                     />
                 )}
-
-                <Footer />
             </div>
+            <Footer />
         </div>
     );
 }

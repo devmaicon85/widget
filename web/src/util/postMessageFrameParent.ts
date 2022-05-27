@@ -1,11 +1,8 @@
 export function postMessageFrameParent() {
-    let height = document.getElementById("popover")?.offsetHeight ?? 0;
-    let width = document.getElementById("popover")?.offsetWidth ?? 0;
-
-    width += 10;
-    height += 10;
+    const height = document.getElementById("popover")?.offsetHeight ?? 0;
+    const width = document.getElementById("popover")?.offsetWidth ?? 0;
     window.parent.postMessage({ width, height }, "*");
-    // console.log(`Send window.parent width:${width} height: ${height}`);
+    console.log(`Widget width: ${width} height: ${height}`);
 }
 
 // ENVIAR O SCREENSHOT PARA O WINDOW.PARENT (SITE HOSPEDEIRO)

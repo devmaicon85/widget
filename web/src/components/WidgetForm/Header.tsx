@@ -16,25 +16,13 @@ export function Header({
     const theme = useGetQueryTheme();
 
     return (
-        <header>
+        <header className="">
             {onFeedbackRestart && (
                 <ButtonArrowLeft onClick={onFeedbackRestart} />
             )}
 
             <span
-                className={`text-xl 
-                            leading-6 
-                            flex 
-                            items-center 
-                            text-center  
-                            justify-center
-                            h-16
-                            text-white
-                            rounded-t-xl
-                            p-9
-                            bg-theme-${theme}
-
-                            `}
+                className={`text-xl leading-6  w-full flex items-center text-center justify-center h-16 text-white rounded-t-xl p-9 bg-theme-${theme}`}
             >
                 {imgUrl && (
                     <>
