@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
-import { useSearchParams } from "react-router-dom";
+import { BiSkipPrevious } from "react-icons/bi";
 import { apiHelp } from "../../../lib/api";
-import { useGetQueryApiFaq, useGetQueryTitle } from "../../../util/getQueryUrl";
+import {
+    useGetQueryApiFaq,
+    useGetQueryTheme,
+    useGetQueryTitle,
+} from "../../../util/getQueryUrl";
 import { postMessageFrameParent } from "../../../util/postMessageFrameParent";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
-import { TextArea } from "../../TextArea";
 import { Header } from "../Header";
 
 type Props = {
     onFinally: () => void;
 };
 
-type DataHelpType = {
+export type DataHelpType = {
     title: string;
     description: string;
 };
@@ -25,14 +28,13 @@ export function Step0_Help({ onFinally }: Props) {
     const [messageError, setMessageError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
-    const [query] = useSearchParams();
+    const [question, setQuestion] = useState<DataHelpType | null>(null);
 
     const titleHeader = useGetQueryTitle();
-
     const urlApi = useGetQueryApiFaq();
+    const theme = useGetQueryTheme();
 
     useEffect(() => {
-        setLoading(true);
         setMessageError(null);
 
         if (urlApi.length < 20) {
@@ -40,20 +42,30 @@ export function Step0_Help({ onFinally }: Props) {
             onFinally();
         }
 
+        if (!userQuery) {
+            setMessageError("ex: horario atendimento");
+            setLoading(false);
+            return;
+        }
+
+        if (!userQuery || userQuery.length < 4) {
+            setMessageError("digite pelo menos 4 caracteres");
+            setLoading(false);
+            return;
+        }
+
+        setLoading(true);
+
         async function consultApi() {
             try {
-                if (!userQuery || userQuery.length < 4) {
-                    setMessageError("digite pelo menos 4 caracteres");
-                    return;
-                }
-
                 setWasConsulted(true);
                 const result = await apiHelp.get(urlApi + userQuery);
 
                 if (result.data.length > 0) {
                     setDataHelp(result?.data);
+                    setMessageError("Confira os principais resultados abaixo:");
                 } else {
-                    setMessageError("Nenhum resultado encontrado");
+                    setMessageError("Nenhum resultado encontrado =(");
                     setDataHelp([]);
                 }
             } catch (error) {
@@ -80,53 +92,84 @@ export function Step0_Help({ onFinally }: Props) {
 
     useEffect(() => {
         postMessageFrameParent();
-    }, [dataHelp]);
+    }, [dataHelp, question]);
 
     return (
-        <>
+        <div>
             <Header>{titleHeader}</Header>
 
-            <div className="flex flex-col justify-center h-auto p-4 ">
-                <span className="flex justify-center mb-2 text-base font-bold text-gray-700 dark:text-gray-300 ">
-                    em que podemos ajudar?
-                </span>
+            {/* INICIO PERGUNTA */}
+            {!question && (
+                <div>
+                    <div className="flex flex-col justify-center h-auto p-4 pb-0 ">
+                        <span className="flex justify-center mb-2 text-base font-bold text-gray-700 dark:text-gray-300 ">
+                            em que podemos ajudar?
+                        </span>
 
-                <Input
-                    placeholder="digite aqui sua dúvida em poucas palavras..."
-                    onChange={(e) => setUserQuery(e.target.value)}
-                    title="digite aqui sua dúvida em poucas palavras para que possamos tentar encontrar uma resposta rapidamente"
-                />
-                <span className="absolute flex justify-center gap-2 p-2 text-xs right-5">
-                    {loading && <AiOutlineLoading className="animate-spin" />}
-                </span>
-                <span className="flex justify-center h-auto text-sm font-extralight">
-                    <div className="p-2 text-gray-500">
-                        {messageError
-                            ? messageError
-                            : "exemplo: horário atendimento"}
+                        <div className="flex items-center">
+                            <Input
+                                placeholder="digite aqui sua dúvida em poucas palavras..."
+                                onChange={(e) => setUserQuery(e.target.value)}
+                                className="text-sm"
+                                title="digite aqui sua dúvida em poucas palavras para que possamos tentar encontrar uma resposta rapidamente"
+                            />
+                            <span className=" absolute opacity-80 text-xl h-8 flex justify-center items-center w-8 right-4">
+                                {loading && (
+                                    <AiOutlineLoading className="animate-spin" />
+                                )}
+                            </span>
+                        </div>
+                        <span className="flex justify-center h-auto text-sm">
+                            <div className="opacity-80 my-2 mb-8 h-6 w-full justify-center flex">
+                                {messageError}
+                            </div>
+                        </span>
                     </div>
-                </span>
-            </div>
 
-            {dataHelp && (
-                <>
-                    <ul className="flex flex-col w-full p-4 mb-4 overflow-auto border-0 text-wr max-h-96 ">
-                        {dataHelp.map((help, index) => (
-                            <li key={index} className="p-2 border-0">
-                                <div className="mb-2 text-sm font-bold border-0">
-                                    {help.title}
-                                </div>
-                                <div className="text-sm text-justify">
-                                    <TextArea
-                                        disabled={true}
-                                        value={help.description}
-                                    />
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </>
+                    {dataHelp && dataHelp.length > 0 && (
+                        <ul className="flex flex-col w-full min-h-[200px] list-decimal px-8 mb-4 overflow-auto text-wr max-h-96 ">
+                            {dataHelp.map((help, index) => (
+                                <li key={index} className="p-0 mb-1 border-0">
+                                    <div className="mb text-sm font-bold border-0">
+                                        <div
+                                            className="cursor-pointer hover:underline opacity-75"
+                                            onClick={() => setQuestion(help)}
+                                        >
+                                            {help.title}
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
             )}
+            {/* FINAL PERGUNTA  */}
+
+            {/* INICIO RESPOSTA */}
+            {question && (
+                <div>
+                    <div className="flex flex-col w-full p-4 mb-2 overflow-auto border-0 text-wr max-h-96 ">
+                        <div className="p-0 mb-1 border-0">
+                            <div className="mb-2 text-sm font-bold border-0">
+                                {question.title}
+                            </div>
+                            <div className="text-sm">
+                                {question.description}
+                            </div>
+
+                            <div
+                                className={`text-theme-${theme} font-bold cursor-pointer hover:opacity-70  flex items-center w-[6rem] mt-6`}
+                                onClick={() => setQuestion(null)}
+                            >
+                                <BiSkipPrevious className="h-9 w-9" />
+                                VOLTAR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {/* FINAL RESPOSTA */}
 
             <Button
                 className={`flex justify-center  w-[80%] m-auto mb-4 ${
@@ -136,6 +179,6 @@ export function Step0_Help({ onFinally }: Props) {
             >
                 {titleHeader}
             </Button>
-        </>
+        </div>
     );
 }
