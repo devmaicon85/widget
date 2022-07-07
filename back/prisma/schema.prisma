@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
     previewFeatures = ["referentialIntegrity"]
 }
 
@@ -18,12 +18,11 @@ datasource db {
 //   url      = env("DATABASE_URL")
 // }
 
-
 model Feedback {
     id           String  @id @default(uuid())
     type         String
-    comment      String
-    screenshot   String?
+    comment      String  @db.MediumText
+    screenshot   String? @db.LongText
     emailSendTo  String?
     emailReplyTo String?
 
