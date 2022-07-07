@@ -9,7 +9,7 @@ const navigation = [
     { name: "Home", href: "#", current: true },
     {
         name: "OpenSource",
-        href: "https://github.com/devmaicon85/widget.v2/",
+        href: "https://github.com/devmaicon85/widget/",
         current: false,
         target: "_blank",
     },
@@ -125,7 +125,11 @@ export default function Header() {
                                     >
                                         <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
-                                                {({ active }) => (
+                                                {({
+                                                    active,
+                                                }: {
+                                                    active: boolean;
+                                                }) => (
                                                     <a
                                                         href="#"
                                                         className={classNames(
@@ -140,7 +144,11 @@ export default function Header() {
                                                 )}
                                             </Menu.Item>
                                             <Menu.Item>
-                                                {({ active }) => (
+                                                {({
+                                                    active,
+                                                }: {
+                                                    active: boolean;
+                                                }) => (
                                                     <a
                                                         href="#"
                                                         className={classNames(
@@ -155,7 +163,11 @@ export default function Header() {
                                                 )}
                                             </Menu.Item>
                                             <Menu.Item>
-                                                {({ active }) => (
+                                                {({
+                                                    active,
+                                                }: {
+                                                    active: boolean;
+                                                }) => (
                                                     <a
                                                         href="#"
                                                         // onClick={Logoff}
