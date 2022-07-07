@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { NodeMailerMailAdapter } from "./adapters/nodemailer/nodeMailerMailAdapter";
-import { prisma } from "./prisma";
 import { PrismaFeedbacksRepository } from "./repositories/prisma/prismaFeedbacksRepository";
 import { SubmitFeedbackUseCase } from "./useCases/submitFeedbackUseCase";
 
@@ -10,10 +9,7 @@ routes.get("/", (req, res) => {
     return res.json({ api: true });
 });
 
-// routes.get("/feedbacks", async (req, res) => {
-//     const feedbacks = await prisma.feedback.findMany();
-//     return res.json({ feedbacks });
-// });
+
 routes.post("/feedbacks", async (req, res) => {
     try {
         const { type, comment, screenshot, emailReplyTo, emailSendTo, title } =
