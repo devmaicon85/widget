@@ -12,7 +12,6 @@ export const feedbackTypes = {
         placeholder:
             "Algo não está funcionando bem? Queremos corrigir. Conte com detalhes o que está acontecendo...",
     },
-
     IDEA: {
         title: "Ideia",
         image: {
