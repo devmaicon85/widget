@@ -40,7 +40,6 @@
 
 - GERADOR DE SCRIPT PARA IMPLANTAÇÃO EM QUALQUER SITE
   - Gera um script automático para ser inserir o WIDGET em qualquer site html;
-<br/>
 - TÍTULO do Widget personalizado (Feedback, Fale Conosco, WhatsApp...etc);
 - E-MAIL do remetente (opcional) para retorno;
 - E-MAIL do destinatário para envio dos e-mails;
