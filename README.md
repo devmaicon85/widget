@@ -1,8 +1,9 @@
 <p align="center">
   <img alt="FeedWidget" src="https://user-images.githubusercontent.com/21183446/168500841-259c03fc-9f55-408a-adeb-d9d0290139f3.svg" width="70%" />
+  <h2 align="center">Configure e instale um script do Widget em seu site rapidamente</h2>
 </p>
 
-
+<br/><br/>
 
 
 <p align="center">
@@ -22,9 +23,9 @@
 
 <br/><br/>
 
-<h1 align="center">Personalize seu WidgetDev</h1>
+<h1 align="center">Demonstração</h1>
 <p align="center">
-    <img alt="FeedWidget" width="70%" src="https://user-images.githubusercontent.com/21183446/168501265-5c6b2655-b48e-42c8-b909-059353404473.gif" />
+    <img alt="FeedWidget" width="90%" src="https://user-images.githubusercontent.com/21183446/168501265-5c6b2655-b48e-42c8-b909-059353404473.gif" />
         <h2 align="center">
             <a  href="https://www.youtube.com/watch?v=wBts_U1mwSQ" target="_blank">
         visualizar vídeo no youtube
@@ -33,9 +34,41 @@
         </h2>
 </p>
 
+<br/><br/>
+
+## 🚀 Próximo Nível - Atualizações realizadas<br/><br/>
+
+- GERADOR DE SCRIPT PARA IMPLANTAÇÃO EM QUALQUER SITE
+  - Gera um script automático para ser inserir o WIDGET em qualquer site html;
+<br/>
+- TÍTULO do Widget personalizado (Feedback, Fale Conosco, WhatsApp...etc);
+- E-MAIL do remetente (opcional) para retorno;
+- E-MAIL do destinatário para envio dos e-mails;
+- WHATSAPP do usuário destinatário, para abrir automaticamente no final do envio;
+- INSTAGRAM para ser exibido botão final do Feedback;
+- SCREENSHOT opcional (nem todos os sites precisam);
+- TEMA Dark | Light;
+- CORES - diversas opções de cores do Widget;
+- DOMÍNIO https://widgetdev.online
+- HOSPEDAGEM backend e frontend e banco MYSQL no PlanetScale;
+  
 
 
 
+OUTRAS ATUALIZAÇÕES REALIZADAS 
+- Html do e-mail melhorado - Taxa de 90% de de market support no mailtrap
+- Screenshot agora é anexado no e-mail (as tag img com base64 não aparecem no gmail)
+- Configuração do email SMTP por .env - Testado e funcionando no mailtrap e mailgun
+- Novo arquivo template.html em views/ para mudança do HTML de forma simples
+
+
+SITES HTML UTILIZANDO O WIDGET
+
+- [https://playcode.io/896306](https://playcode.io/896306)
+- [https://jsfiddle.net/devmaicon/38942rj7/2/](https://jsfiddle.net/devmaicon/38942rj7/2/)
+
+
+<br/><br/>
 
 ## 🧪 Tecnologias
 
@@ -56,6 +89,9 @@ BACK END
 - [Express](https://expressjs.com/pt-br)
 - [Prisma](https://www.prisma.io)
 - [Jest](https://jestjs.io)
+
+
+<br/><br/>
 
 ## 🚀 Como executar
 
@@ -103,10 +139,10 @@ $ npm install
 # Iniciar o projeto
 $ npm run dev
 
+#A aplicação WEB pode ser acessada em http://localhost:3030
 ```
 
 
-A aplicação WEB pode ser acessada em [`localhost:3030`](http://localhost:3030).
 
 
 ## 💻 Projeto
@@ -121,57 +157,6 @@ Você pode visualizar o layout do projeto original através do link abaixo:
 - [Layout Web](https://www.figma.com/file/xHveOl5sXHMQfXFZ69H1AR/Feedback-Widget)
 
 
-## 🚀 NextLevel
-
-ALGUMAS MELHORIAS QUE REALIZEI NO PROJETO
-
-VISÃO DO DEV
-- Configuração do email SMTP por .env - Testado e funcionando no mailtrap e mailgun
-- Novo arquivo template.html em views/ para mudança do HTML de forma simples
-
-INFRA
-- Domínio adquirido https://widgetdev.online
-- DNS do domínio configurados na vercel e mailgun
-- Backend Hospedado com deploy automatico na digital ocean também
-  
-
-VISÃO DO USUÁRIO DO WIDGET
-- Abrir no tema padrão do sistema do usuário automaticamente (Dark | Light)
-- Novo botão de opção de tema manual Tema Dark | Light
-- Novo campo e-mail (opcional) para retorno ao remetente quando necessário
-- Novo botão WhatsApp do destino para abrir o WhatsApp no final automaticamente
-- Novo botão Instagram para ser exibido um botão final do Feedback
-
-VISÃO DO SITE QUE DESEJA UTILIZAR O WIDGET
-- Campo para personalizar TÍTULO do Widget (Feedback, Fale Conosco, WhatsApp...etc)
-- Campo de E-MAIL para personalizar o destinatário no qual será enviados
-- Opção de ter ou não o botão de Screenshot no Widget (nem todos os sites precisam)
-- Mais de 20 opções de cores do Widget
-- Html do e-mail melhorado - Taxa de 90% de de market support no mailtrap
-- Aparência do Widget alterada, menos arrendodado, header na cor do tema, botão, opacidade, etc...
-- Screenshot agora é anexado no e-mail (as tag img com base64 não aparecem no gmail)
-  
-
-  FUNCIONALIDADE MAIS COMPLEXA
-  - Script automático (também criado por mim) para o usuário conseguir inserir o Feed Widget em qualquer site html, sem precisar saber de programação ou baixar arquivos.
-
-  - O Script insere um iframe no site (zendesk faz o mesmo)
-  Grande desafio pois tenho pouco conhecimento de javascript. E por se tratar de iframe, ele deve dimensionar de acordo com o widget e o screenshot deve funcionar mesmo estando em um iframe;
-
-
-SITES HTML UTILIZANDO O SCRIPT
-
-- [https://playcode.io/896306](https://playcode.io/896306)
-- [https://jsfiddle.net/devmaicon/38942rj7/2/](https://jsfiddle.net/devmaicon/38942rj7/2/)
-
-
-<br><br>
-
- <h1 align="center">Link com WhatsApp e Instagram</h1>
-
-<p align="center">
-    <img alt="FeedWidget" width="70%" src="https://user-images.githubusercontent.com/21183446/168501441-b1fd5e61-3920-4ffc-b1b1-f4941931a424.gif" />
-</p>
 
 
 <br/><br/>
