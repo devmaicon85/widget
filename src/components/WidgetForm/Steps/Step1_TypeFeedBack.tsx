@@ -2,6 +2,7 @@ import { FeedBackType, feedbackTypes } from "../../../types/FeedBackTypes";
 import { useGetQueryTitle } from "../../../util/getQueryUrl";
 import { Button } from "../../Button";
 import { ButtonArrowLeft } from "../ButtonArrowLeft";
+import { useRouter } from "next/router";
 
 type Props = {
     onFeedbackTypeChanged: (key: FeedBackType) => void;
@@ -13,9 +14,14 @@ export function Step1_TypeFeedBack({
 }: Props) {
     const titleHeader = useGetQueryTitle();
 
+    const router = useRouter();
+
     return (
         <>
-            <ButtonArrowLeft onClick={onFeedbackRestartType} />
+            {router.query.apiFaq && (
+                <ButtonArrowLeft onClick={onFeedbackRestartType} />
+            )}
+            
             {/* <Header onFeedbackRestart={onFeedbackRestartType}>
                 {titleHeader}
             </Header> */}

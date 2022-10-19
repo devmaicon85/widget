@@ -8,18 +8,30 @@ import { Step0_Help } from "./Steps/Step0_Help";
 import { Step1_TypeFeedBack } from "./Steps/Step1_TypeFeedBack";
 import { Step2_Content } from "./Steps/Step2_Content";
 import { Step3_Success } from "./Steps/Step3_Success";
+import { useRouter } from "next/router";
 
 export function WidgetForm() {
     const [feedbackType, setFeedbackType] = useState<FeedBackType | null>();
 
     const [nextStep, setNextStep] = useState(0);
 
+    const router = useRouter();
     const title = useGetQueryTitle();
 
+    useEffect(()=>{
+        if(router.query.apiFaq){
+            setNextStep(0);
+        }else{
+            setNextStep(1);
+        }
+    },[router.query.apiFaq])
+
     useEffect(() => {
+        
         postMessageFrameParent();
     }, [nextStep, feedbackType]);
 
+ 
     //max-w-[400px]  max-h-full  w-[calc(100vw-2rem)]
     return (
         <div

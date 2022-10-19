@@ -145,8 +145,8 @@ async function OnMessage(e: MessageEvent) {
     iFrameElement.style.width = width + "px";
     iFrameElement.style.height = height + "px";
 
-    console.log(" frame height::", iFrameElement.style.width);
-    console.log(" frame width::", iFrameElement.style.height);
+    // console.log(" frame height::", iFrameElement.style.width);
+    // console.log(" frame width::", iFrameElement.style.height);
 
     // se mudar o tamanho da tela do site
     window.addEventListener("resize", function () {

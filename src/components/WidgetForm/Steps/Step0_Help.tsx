@@ -11,6 +11,7 @@ import {
 import { postMessageFrameParent } from "../../../util/postMessageFrameParent";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
+import { useRouter } from 'next/router';
 
 type Props = {
     onFinally: () => void;
@@ -34,6 +35,8 @@ export function Step0_Help({ onFinally }: Props) {
     const urlApi = useGetQueryApiFaq();
     const theme = useGetQueryTheme();
 
+    const router = useRouter();
+
     useEffect(() => {
         postMessageFrameParent();
         console.log("mudou tamanho frame");
@@ -42,12 +45,10 @@ export function Step0_Help({ onFinally }: Props) {
     useEffect(() => {
         setMessageError(null);
 
-        if (!urlApi) {
-            onFinally();
-        }
-
+     
         if (urlApi) {
             if (!validator.isURL(urlApi)) {
+                console.log("url invalida: ", urlApi);
                 onFinally();
             }
         }
