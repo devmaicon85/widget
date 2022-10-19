@@ -48,25 +48,24 @@
 - TEMA Dark | Light;
 - CORES - diversas opções de cores do Widget;
 - DOMÍNIO https://widgetdev.online
-- HOSPEDAGEM backend e frontend e banco MYSQL no PlanetScale;
-- Convertido em NEXTJS
+- HOSPEDAGEM banco MYSQL no PlanetScale;
+- Todo projeto convertido em NEXTJS mantendo todas as camadas do back em /src/backend
 
 
 
 OUTRAS ATUALIZAÇÕES REALIZADAS 
 - Html do e-mail melhorado - Taxa de 90% de de market support no mailtrap
-- Screenshot agora é anexado no e-mail (as tag img com base64 não aparecem no gmail)
-- Configuração do email SMTP por .env - Testado e funcionando no mailtrap e mailgun
-- Novo arquivo template.html em views/ para mudança do HTML de forma simples
+- Screenshot agora é anexado no e-mail (gmail não suporta base64)
+- Configuração do email SMTP por .env - Testado e funcionando no mailtrap, mailgun e gmail
+- Novo arquivo template.html em backend/views/ para mudança do HTML de forma simples
 
+<br/>
+<h2>EXEMPLO DO SCRIPT RODANDO EM JSFIDDLE</h2>
 
-SITES HTML UTILIZANDO O WIDGET
-
-- [https://playcode.io/896306](https://playcode.io/896306)
 - [https://jsfiddle.net/devmaicon/38942rj7/2/](https://jsfiddle.net/devmaicon/38942rj7/2/)
 
 
-<br/><br/>
+<br/>
 
 ## 🧪 Tecnologias
 
@@ -74,15 +73,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
 - [NextJS](https://nextjs.org/)
-- [TypeScript](https://www.typescriptlang.org)
+- [Typescript](https://www.typescriptlang.org)
 - [Tailwindcss](https://tailwindcss.com)
+- [Prisma](https://www.prisma.io)
 
 
-
-[VEJA O PROJETO FUNCIONANDO](https://widgetdev.online)
-
-
-<br/><br/>
+<br/>
 
 ## 🚀 Como executar
 
