@@ -64,7 +64,7 @@ export const DataScript = {
     apiFaq: {
         field: "apifaq",
         label: "URL API de Perguntas e Respostas",
-        description: "Você pode criar suas perguntas e respostas públicas ",
+        description: `Você pode criar suas perguntas e respostas públicas em https://faq.widgetdev.online`,
         placeholder: "",
         default: "",
     },

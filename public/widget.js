@@ -7499,7 +7499,7 @@
     whatsapp: {
       field: "whatsapp",
       label: "WhatsApp",
-      description: "ddi+ddd+telefone que voc\xEA receber\xE1 os contatos",
+      description: "que voc\xEA receber\xE1 os contatos",
       placeholder: "5511999998888",
       default: ""
     },

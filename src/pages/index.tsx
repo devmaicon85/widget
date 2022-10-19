@@ -156,9 +156,11 @@ export default function Home() {
                                 />
                             </div>
                             <div>
-                                <Label htmlFor="email">
-                                    {data.email.label} -{" "}
-                                    {data.email.description}
+                                <Label
+                                    htmlFor="email"
+                                    description={data.email.description}
+                                >
+                                    {data.email.label}
                                 </Label>
                                 <Input
                                     id="email"
@@ -169,9 +171,11 @@ export default function Home() {
                             </div>
 
                             <div>
-                                <Label htmlFor="whatsapp">
-                                    {data.whatsapp.label} -{" "}
-                                    {data.whatsapp.description}
+                                <Label
+                                    htmlFor="whatsapp"
+                                    description={data.whatsapp.description}
+                                >
+                                    {data.whatsapp.label}
                                 </Label>
                                 <Input
                                     id="whatsapp"
@@ -187,9 +191,11 @@ export default function Home() {
 
                             {/* // INSTAGRAM */}
                             <div>
-                                <Label htmlFor="instagram">
-                                    {data.instagram.label} -
-                                    {data.instagram.description}
+                                <Label
+                                    htmlFor="instagram"
+                                    description={data.instagram.description}
+                                >
+                                    {data.instagram.label}
                                 </Label>
 
                                 <Input
@@ -203,68 +209,63 @@ export default function Home() {
                             </div>
 
                             {/* //API HELP */}
-                            <label className="p-1 text-sm font-bold text-zinc-800">
-                                {data.apiFaq.label}
-                                <div className="p-1 text-sm font-normal">
-                                    {data.apiFaq.description}
-                                    no link:
-                                    <a
-                                        href="https://faq.widgetdev.online"
-                                        target="_blank"
-                                        className="hover:underline"
-                                        rel="noreferrer"
-                                    >
-                                        https://faq.widgetdev.online
-                                    </a>
-                                </div>
+                            <div>
+                                <Label description={data.apiFaq.description}>
+                                    {data.apiFaq.label}
+                                </Label>
                                 <Input
                                     placeholder={data.apiFaq.placeholder}
                                     onChange={(e) => setApiFaq(e.target.value)}
                                     value={apiFaq}
                                 />
-                            </label>
+                            </div>
 
                             {/* OPEN  */}
-                            <label className="font-bold text-md text-zinc-800 ">
-                                {data.open.label}{" "}
-                                <div className="text-sm font-normal">
-                                    {data.open.description}
-                                </div>
-                            </label>
+                            <div className="flex items-center gap-4">
+                                <button
+                                    onClick={() => setOpen(!open)}
+                                    className={
+                                        "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
+                                    }
+                                >
+                                    {open && (
+                                        <Check className="text-slate-900" />
+                                    )}
+                                </button>
+                                <Label description={data.open.description}>
+                                    {data.open.label}
+                                </Label>
+                            </div>
 
-                            <button
-                                onClick={() => setOpen(!open)}
-                                className={
-                                    "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
-                                }
-                            >
-                                {open && <Check className="text-slate-900" />}
-                            </button>
+                            {/* SCREENSHOT */}
+                            <div className="flex items-center gap-4">
+                                <button
+                                    onClick={() =>
+                                        setHasScreenshotButton(
+                                            !hasScreenshotButton
+                                        )
+                                    }
+                                    className={
+                                        "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
+                                    }
+                                >
+                                    {hasScreenshotButton && (
+                                        <Check className="text-slate-900" />
+                                    )}
+                                </button>
 
-                            <label className="p-1 font-bold text-md text-zinc-800">
-                                {data.screenshot.label}
-                                <span className="p-1 text-sm font-normal">
-                                    {data.screenshot.description}
-                                </span>
-                            </label>
-
-                            <button
-                                onClick={() =>
-                                    setHasScreenshotButton(!hasScreenshotButton)
-                                }
-                                className={
-                                    "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
-                                }
-                            >
-                                {hasScreenshotButton && (
-                                    <Check className="text-slate-900" />
-                                )}
-                            </button>
+                                <Label
+                                    description={data.screenshot.description}
+                                >
+                                    {data.screenshot.label}
+                                </Label>
+                            </div>
                         </div>
-                        <div className="justify-center p-6 text-base text-center">
+                        <hr className="my-4 border-0 border-gray-300"/>
+                        <Label>
                             Copie e cole o código abaixo dentro do HTML do seu
                             site para implantar o WidgetDev automaticamente
-                        </div>
+                        </Label>
                         <div className="w-full h-full p-4 font-mono text-sm break-words rounded-xl bg-slate-800 text-slate-300">
                             {scriptUser}
                         </div>
