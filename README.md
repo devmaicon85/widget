@@ -50,7 +50,7 @@
 - CORES - diversas opções de cores do Widget;
 - DOMÍNIO https://widgetdev.online
 - HOSPEDAGEM backend e frontend e banco MYSQL no PlanetScale;
-  
+- Convertido em NEXTJS
 
 
 
@@ -74,20 +74,13 @@ SITES HTML UTILIZANDO O WIDGET
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
-- [Tailwindcss](https://tailwindcss.com)
-- [Vite](https://vitejs.dev)
+- [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org)
+- [Tailwindcss](https://tailwindcss.com)
 
 
 
 [VEJA O PROJETO FUNCIONANDO](https://widgetdev.online)
-
-
-BACK END
-
-- [Express](https://expressjs.com/pt-br)
-- [Prisma](https://www.prisma.io)
-- [Jest](https://jestjs.io)
 
 
 <br/><br/>
@@ -101,14 +94,6 @@ $ git clone https://github.com/devmaicon85/widget
 
 # entrar na pasta do projeto
 $ cd widget
-```
-
-Para iniciar o BACKEND, siga os passos abaixo:
-
-```bash
-
-# Entrar na pasta back
-$ cd back
 
 # Instalar as dependências
 $ npm install
@@ -123,26 +108,6 @@ $ npm run dev
 
 ```
 
-Para iniciar o FRONT END, siga os passos abaixo:
-
-```bash
-
-# estando na pasta do projeto widget, entre na pasta web
-$ cd web
-
-# Instalar as dependências
-$ npm install
-
-# Faça uma copia do arquivo `.env.example` para `.env` e informe suas credenciais
-
-# Iniciar o projeto
-$ npm run dev
-
-#A aplicação WEB pode ser acessada em http://localhost:3030
-```
-
-
-
 
 ## 💻 Projeto
 
@@ -154,7 +119,6 @@ O projeto é uma aplicação para coleta de feedbacks que pode ser adicionado em
 Você pode visualizar o layout do projeto original através do link abaixo:
 
 - [Layout Web](https://www.figma.com/file/xHveOl5sXHMQfXFZ69H1AR/Feedback-Widget)
-
 
 
 
