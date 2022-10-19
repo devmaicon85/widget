@@ -7626,8 +7626,6 @@
     iFrameElement.style.maxWidth = window.screen.width + "px";
     iFrameElement.style.width = width + "px";
     iFrameElement.style.height = height + "px";
-    console.log(" frame height::", iFrameElement.style.width);
-    console.log(" frame width::", iFrameElement.style.height);
     window.addEventListener("resize", function() {
       iFrameElement.style.maxHeight = window.screen.height + "px";
       iFrameElement.style.maxWidth = window.screen.width + "px";

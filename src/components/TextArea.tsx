@@ -1,6 +1,7 @@
+import { TextareaHTMLAttributes } from "react";
 import { useGetQueryTheme } from "../util/getQueryUrl";
 
-type TextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export function TextArea({ ...rest }: TextAreaProps) {
     const theme = useGetQueryTheme();

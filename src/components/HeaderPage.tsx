@@ -8,7 +8,7 @@ import { Fragment } from "react";
 const navigation = [
     { name: "Home", href: "#", current: true },
     {
-        name: "OpenSource",
+        name: "GitHub",
         href: "https://github.com/devmaicon85/widget/",
         current: false,
         target: "_blank",

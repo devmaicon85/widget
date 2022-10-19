@@ -34,7 +34,7 @@ export const DataScript = {
     whatsapp: {
         field: "whatsapp",
         label: "WhatsApp",
-        description: "ddi+ddd+telefone que você receberá os contatos",
+        description: "que você receberá os contatos",
         placeholder: "5511999998888",
         default: "",
     },

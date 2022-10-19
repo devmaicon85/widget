@@ -22,8 +22,6 @@ export function Input({ className, ...rest }: InputProps) {
             focus:ring-theme-${theme}
             focus:ring-1
             resize-none
-
-            
             rounded scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin
             ${className}
             `}

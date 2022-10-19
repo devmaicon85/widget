@@ -1,3 +1,4 @@
+import { Label } from "components/Label";
 import { LogoComponent } from "components/LogoComponent";
 import Image from "next/image";
 import { Check } from "phosphor-react";
@@ -145,34 +146,35 @@ export default function Home() {
                                 </div>
                             </div>
                             <div>
-                                <label className="p-1 text-sm font-bold text-zinc-800">
-                                    Título do Widget
-                                </label>
+                                <Label htmlFor="title">Título do Widge</Label>
                                 <Input
+                                    id="title"
                                     maxLength={85}
                                     onChange={(e) => setTitle(e.target.value)}
                                     value={title ?? ""}
                                     placeholder="Feedback, Contato, Fale Conosco... "
                                 />
                             </div>
-                            <label className="p-1 text-sm font-bold text-zinc-800">
-                                {data.email.label}
-                                <div className="p-1 text-sm font-normal">
-                                    <pre>{data.email.description}</pre>
-                                </div>
+                            <div>
+                                <Label htmlFor="email">
+                                    {data.email.label} -{" "}
+                                    {data.email.description}
+                                </Label>
                                 <Input
+                                    id="email"
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}
                                     placeholder={data.email.placeholder}
                                 />
-                            </label>
+                            </div>
 
-                            <label className="p-1 text-sm font-bold text-zinc-800">
-                                {data.whatsapp.label}
-                                <div className="p-1 text-sm font-normal">
+                            <div>
+                                <Label htmlFor="whatsapp">
+                                    {data.whatsapp.label} -{" "}
                                     {data.whatsapp.description}
-                                </div>
+                                </Label>
                                 <Input
+                                    id="whatsapp"
                                     placeholder={data.whatsapp.placeholder}
                                     onChange={(e) =>
                                         setWhatsapp(
@@ -181,22 +183,24 @@ export default function Home() {
                                     }
                                     value={whatsapp}
                                 />
-                            </label>
+                            </div>
 
                             {/* // INSTAGRAM */}
-                            <label className="p-1 text-sm font-bold text-zinc-800">
-                                {data.instagram.label}
-                                <div className="p-1 text-sm font-normal">
+                            <div>
+                                <Label htmlFor="instagram">
+                                    {data.instagram.label} -
                                     {data.instagram.description}
-                                </div>
+                                </Label>
+
                                 <Input
+                                    id="instagram"
                                     placeholder={data.instagram.placeholder}
                                     onChange={(e) =>
                                         setInstagram(e.target.value)
                                     }
                                     value={instagram}
                                 />
-                            </label>
+                            </div>
 
                             {/* //API HELP */}
                             <label className="p-1 text-sm font-bold text-zinc-800">
