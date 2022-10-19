@@ -1,11 +1,10 @@
 interface Props {
     className?: string;
-    maxWidth?: number;
 }
-export function LogoComponent({ className, maxWidth = 250 }: Props) {
+export function LogoComponent({ className }: Props) {
     return (
         <div
-            className={`flex items-center justify-center ${className} max-w-[${maxWidth}px]`}
+            className={`flex items-center justify-center ${className} max-w-[100%]`}
         >
             <svg
                 version="1.2"

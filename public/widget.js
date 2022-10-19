@@ -7527,7 +7527,7 @@
     apiFaq: {
       field: "apifaq",
       label: "URL API de Perguntas e Respostas",
-      description: "Voc\xEA pode criar suas perguntas e respostas p\xFAblicas ",
+      description: `Voc\xEA pode criar suas perguntas e respostas p\xFAblicas em https://faq.widgetdev.online`,
       placeholder: "",
       default: ""
     }

@@ -42,7 +42,7 @@ export const DataScript = {
         field: "instagram",
         label: "Instagram",
         description:
-            "digite o nome do seu perfil no instagram. Será sugerido para usuário seguir.",
+            "seu perfil no instagram. Será sugerido para usuário seguir.",
         placeholder: "@rocketseat",
         default: "",
     },

@@ -84,7 +84,7 @@ export class SubmitFeedbackUseCase {
                 ],
             });
 
-            console.log("Email enviado com sucesso!");
+            // console.log("Email enviado com sucesso!");
         } catch (error) {
             throw new Error(`error send e-mail feed back: ${error}`);
         }

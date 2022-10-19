@@ -1,3 +1,4 @@
+import { Checkbox } from "components/Checkbox";
 import { Label } from "components/Label";
 import { LogoComponent } from "components/LogoComponent";
 import Image from "next/image";
@@ -94,10 +95,7 @@ export default function Home() {
 
             <div className="container max-w-3xl px-4 mx-auto bg-white sm:px-8 ">
                 <div className="flex items-center justify-center py-4 pt-8 mt-4 ">
-                    <LogoComponent
-                        className={`fill-theme-${selectedTheme}`}
-                        maxWidth={350}
-                    />
+                    <LogoComponent className={`fill-theme-${selectedTheme}`} />
                 </div>
                 <div className="py-4">
                     <h1 className="px-4 text-2xl rounded-lg">
@@ -146,8 +144,9 @@ export default function Home() {
                                 </div>
                             </div>
                             <div>
-                                <Label htmlFor="title">Título do Widge</Label>
+                                <Label htmlFor="title">Título do Widget</Label>
                                 <Input
+                                    theme={selectedTheme}
                                     id="title"
                                     maxLength={85}
                                     onChange={(e) => setTitle(e.target.value)}
@@ -163,6 +162,7 @@ export default function Home() {
                                     {data.email.label}
                                 </Label>
                                 <Input
+                                    theme={selectedTheme}
                                     id="email"
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}
@@ -178,6 +178,7 @@ export default function Home() {
                                     {data.whatsapp.label}
                                 </Label>
                                 <Input
+                                    theme={selectedTheme}
                                     id="whatsapp"
                                     placeholder={data.whatsapp.placeholder}
                                     onChange={(e) =>
@@ -199,6 +200,7 @@ export default function Home() {
                                 </Label>
 
                                 <Input
+                                    theme={selectedTheme}
                                     id="instagram"
                                     placeholder={data.instagram.placeholder}
                                     onChange={(e) =>
@@ -214,6 +216,7 @@ export default function Home() {
                                     {data.apiFaq.label}
                                 </Label>
                                 <Input
+                                    theme={selectedTheme}
                                     placeholder={data.apiFaq.placeholder}
                                     onChange={(e) => setApiFaq(e.target.value)}
                                     value={apiFaq}
@@ -222,16 +225,10 @@ export default function Home() {
 
                             {/* OPEN  */}
                             <div className="flex items-center gap-4">
-                                <button
-                                    onClick={() => setOpen(!open)}
-                                    className={
-                                        "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
-                                    }
-                                >
-                                    {open && (
-                                        <Check className="text-slate-900" />
-                                    )}
-                                </button>
+                                <Checkbox
+                                    check={open}
+                                    handleCheck={() => setOpen(!open)}
+                                />
                                 <Label description={data.open.description}>
                                     {data.open.label}
                                 </Label>
@@ -239,20 +236,14 @@ export default function Home() {
 
                             {/* SCREENSHOT */}
                             <div className="flex items-center gap-4">
-                                <button
-                                    onClick={() =>
+                                <Checkbox
+                                    check={hasScreenshotButton}
+                                    handleCheck={() =>
                                         setHasScreenshotButton(
                                             !hasScreenshotButton
                                         )
                                     }
-                                    className={
-                                        "h-8 w-8 bg-white rounded-md border-2 text-3xl flex "
-                                    }
-                                >
-                                    {hasScreenshotButton && (
-                                        <Check className="text-slate-900" />
-                                    )}
-                                </button>
+                                />
 
                                 <Label
                                     description={data.screenshot.description}
@@ -261,7 +252,7 @@ export default function Home() {
                                 </Label>
                             </div>
                         </div>
-                        <hr className="my-4 border-0 border-gray-300"/>
+                        <hr className="my-4 border-0 border-gray-300" />
                         <Label>
                             Copie e cole o código abaixo dentro do HTML do seu
                             site para implantar o WidgetDev automaticamente

@@ -39,7 +39,7 @@ export function Step0_Help({ onFinally }: Props) {
 
     useEffect(() => {
         postMessageFrameParent();
-        console.log("mudou tamanho frame");
+        // console.log("mudou tamanho frame");
     }, [dataHelp, question]);
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export function Step0_Help({ onFinally }: Props) {
      
         if (urlApi) {
             if (!validator.isURL(urlApi)) {
-                console.log("url invalida: ", urlApi);
+                // console.log("url invalida: ", urlApi);
                 onFinally();
             }
         }
@@ -119,6 +119,7 @@ export function Step0_Help({ onFinally }: Props) {
 
                         <div className="flex items-center">
                             <Input
+                                theme={theme}
                                 placeholder="digite sua dúvida em poucas palavras..."
                                 onChange={(e) => setUserQuery(e.target.value)}
                                 className="text-sm"
