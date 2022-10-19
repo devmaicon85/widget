@@ -1,9 +1,6 @@
+<div>
 <p align="center">
-  <img alt="FeedWidget" src="https://user-images.githubusercontent.com/21183446/168500841-259c03fc-9f55-408a-adeb-d9d0290139f3.svg" width="70%" />
-  <h1 align="center">Widget em NEXT JS</h1>
-  <h2 align="center">Configure e instale um script do Widget em seu site rapidamente</h2>
-</p>
-
+  <img alt="FeedWidget" src="https://i.ibb.co/8bH753w/logo.png" width="70%" />
 <br/><br/>
 
 
@@ -147,3 +144,5 @@ Esse projeto está sob a licença MIT.
 ---
 
 Feito com 💜 por mim no projeto 👋🏻 [da NLW Returns da Rocketseat](https://www.rocketseat.com.br/)
+
+</div>
