@@ -1,3 +1,5 @@
+import { LogoComponent } from "components/LogoComponent";
+import Image from "next/image";
 import { Check } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
@@ -5,14 +7,6 @@ import Header from "../components/HeaderPage";
 import { Input } from "../components/Input";
 import { DataScript, DataScriptTypes } from "../types/DataScriptTypes";
 import { createScriptUser, executeScriptUser } from "../util/createScriptUser";
-
-// import dynamic from "next/dynamic";
-
-// const newLocal = "../util/createScriptUser";
-
-// const DynamicComponentCreateScriptUser = dynamic(() => import(newLocal), {
-//     ssr: false,
-// });
 
 import {
     useGetQueryApiFaq,
@@ -82,27 +76,36 @@ export default function Home() {
             apiFaq: String(apiFaq),
         });
         setScriptUser(script);
-    }, [apiFaq, email, hasScreenshotButton, instagram, open, selectedTheme, title, whatsapp]);
+    }, [
+        apiFaq,
+        email,
+        hasScreenshotButton,
+        instagram,
+        open,
+        selectedTheme,
+        title,
+        whatsapp,
+    ]);
 
     return (
         <div className="bg-slate-100">
             <Header />
 
             <div className="container max-w-3xl px-4 mx-auto bg-white sm:px-8 ">
-                <div className="py-8">
-                    <h1 className="p-4 mb-2 text-2xl rounded-lg">
-                        <div className="mb-4 leading-10 tracking-widest text-center">
-                            Instale Agora um{" "}
-                            <label
-                                className={`bg-theme-${selectedTheme} text-slate-100 text-xl rounded-md pr-5 pl-5 pt-1 pb-1 m-3`}
-                            >
-                                WidgetDev
-                            </label>
-                            no seu site
+                <div className="flex items-center justify-center py-4 pt-8 mt-4 ">
+                    <LogoComponent
+                        className={`fill-theme-${selectedTheme}`}
+                        maxWidth={350}
+                    />
+                </div>
+                <div className="py-4">
+                    <h1 className="px-4 text-2xl rounded-lg">
+                        <div className="leading-8 tracking-widest text-center">
+                            Instale um WidgetDev no seu site ou blog
                         </div>
                     </h1>
                     <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-                        <div className="flex flex-col gap-3 p-4 border rounded-xl">
+                        <div className="flex flex-col gap-3 p-4 rounded-xl">
                             <div className="md:m-5">
                                 <label className="p-1 font-bold text-md text-zinc-800">
                                     Cor do tema do seu Widget
@@ -154,7 +157,7 @@ export default function Home() {
                             </div>
                             <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.email.label}
-                                <div className="p-1 text-sm font-thin">
+                                <div className="p-1 text-sm font-normal">
                                     <pre>{data.email.description}</pre>
                                 </div>
                                 <Input
@@ -166,7 +169,7 @@ export default function Home() {
 
                             <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.whatsapp.label}
-                                <div className="p-1 text-sm font-thin">
+                                <div className="p-1 text-sm font-normal">
                                     {data.whatsapp.description}
                                 </div>
                                 <Input
@@ -183,7 +186,7 @@ export default function Home() {
                             {/* // INSTAGRAM */}
                             <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.instagram.label}
-                                <div className="p-1 text-sm font-thin">
+                                <div className="p-1 text-sm font-normal">
                                     {data.instagram.description}
                                 </div>
                                 <Input
@@ -198,7 +201,7 @@ export default function Home() {
                             {/* //API HELP */}
                             <label className="p-1 text-sm font-bold text-zinc-800">
                                 {data.apiFaq.label}
-                                <div className="p-1 text-sm font-thin">
+                                <div className="p-1 text-sm font-normal">
                                     {data.apiFaq.description}
                                     no link:
                                     <a
@@ -220,7 +223,7 @@ export default function Home() {
                             {/* OPEN  */}
                             <label className="font-bold text-md text-zinc-800 ">
                                 {data.open.label}{" "}
-                                <div className="text-sm font-thin">
+                                <div className="text-sm font-normal">
                                     {data.open.description}
                                 </div>
                             </label>
@@ -236,7 +239,7 @@ export default function Home() {
 
                             <label className="p-1 font-bold text-md text-zinc-800">
                                 {data.screenshot.label}
-                                <span className="p-1 text-sm font-thin">
+                                <span className="p-1 text-sm font-normal">
                                     {data.screenshot.description}
                                 </span>
                             </label>

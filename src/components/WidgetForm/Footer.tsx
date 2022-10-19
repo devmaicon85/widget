@@ -1,4 +1,4 @@
-import { GitBranch } from "phosphor-react";
+import { GitBranch, GithubLogo } from "phosphor-react";
 import { useGetQueryTheme } from "../../util/getQueryUrl";
 import { Theme } from "./ButtonTheme";
 
@@ -16,8 +16,8 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
             >
-                <GitBranch size={18} className="ml-1 mr-1" />
-                WidgetDev v2
+                <GithubLogo size={18} className="ml-1 mr-1" />
+                WidgetDev in Nextjs
             </a>
             <Theme />
         </footer>

@@ -1,9 +1,9 @@
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 import { Fragment } from "react";
 
-const logoIconUrl = new URL("../assets/logo.svg", import.meta.url).href;
-const chatIconUrl = new URL("../assets/chat.svg", import.meta.url).href;
+
 
 const navigation = [
     { name: "Home", href: "#", current: true },
@@ -44,17 +44,15 @@ export default function Header() {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex items-center justify-center flex-1 bg- sm:items-stretch sm:justify-start">
-                                <div className="flex items-center flex-shrink-0 pl-5 pr-5 bg-white rounded-2xl">
-                                    <img
-                                        src={logoIconUrl}
-                                        alt="logo"
-                                        className="h-10"
+                                <div className="flex items-center pl-5 pr-5 rounded-2xl">
+                                    <Image
+                                        src="/assets/favicon.svg"
+                                        alt="favicon"
+                                        objectFit="contain"
+                                        width={30}
+                                        height={26}
                                     />
-                                    <img
-                                        src={chatIconUrl}
-                                        alt="logo"
-                                        className="h-7"
-                                    />
+                                   
                                 </div>
                                 <div className="hidden sm:block sm:ml-6 ">
                                     <div className="flex space-x-4">
