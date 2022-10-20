@@ -7506,7 +7506,7 @@
     instagram: {
       field: "instagram",
       label: "Instagram",
-      description: "digite o nome do seu perfil no instagram. Ser\xE1 sugerido para usu\xE1rio seguir.",
+      description: "seu perfil no instagram. Ser\xE1 sugerido para usu\xE1rio seguir.",
       placeholder: "@rocketseat",
       default: ""
     },
