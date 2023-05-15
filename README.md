@@ -32,7 +32,6 @@
 -   SCREENSHOT opcional (nem todos os sites precisam);
 -   TEMA Dark | Light;
 -   CORES - diversas opções de cores do Widget;
--   DOMÍNIO https://widgetdev.online
 -   HOSPEDAGEM banco MYSQL no PlanetScale;
 -   Todo projeto convertido em NEXTJS mantendo todas as camadas do back em /src/backend
 
@@ -46,7 +45,7 @@ OUTRAS ATUALIZAÇÕES REALIZADAS
 <br/>
 <h2>EXEMPLO DO SCRIPT RODANDO EM JSFIDDLE</h2>
 
--   [https://jsfiddle.net/devmaicon/38942rj7/2/](https://jsfiddle.net/devmaicon/38942rj7/2/)
+-   [https://jsfiddle.net/devmaicon/38942rj7/9/](https://jsfiddle.net/devmaicon/38942rj7/9/)
 
 <br/>
 
